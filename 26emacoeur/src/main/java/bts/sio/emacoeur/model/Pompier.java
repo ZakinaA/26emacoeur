@@ -4,10 +4,70 @@
  */
 package bts.sio.emacoeur.model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author ts1sio
  */
 public class Pompier {
+    
+    private int id;
+    private String nom;
+    private String prenom;
+    private LocalDate dateNaissance;
+    private int numeroBip;
+
+    public Pompier() {
+    }
+
+    public Pompier(int id, String nom, String prenom, LocalDate dateNaissance, int numeroBip) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.numeroBip = numeroBip;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public LocalDate getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public int getNumeroBip() {
+        return numeroBip;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setDateNaissance(LocalDate dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public void setNumeroBip(int numeroBip) {
+        this.numeroBip = numeroBip;
+    }
+    
     
 }
