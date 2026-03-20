@@ -35,8 +35,6 @@ public class TypeIntervention {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
-    }
-    
-    
+    }   
     
 }

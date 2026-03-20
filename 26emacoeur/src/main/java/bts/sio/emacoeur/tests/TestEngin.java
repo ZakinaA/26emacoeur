@@ -18,7 +18,7 @@ public class TestEngin {
         en.setId(1);
         en.setType("Camion");
         
-        Engin en2 = new Engin(2, "voiture");
+        Engin en2 = new Engin(2, "Voiture");
         
         System.out.println(en.getId()+" "+en.getType());
         System.out.println(en2.getId()+" "+en2.getType());
