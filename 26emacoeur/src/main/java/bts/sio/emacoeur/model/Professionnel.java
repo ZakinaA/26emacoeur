@@ -4,7 +4,7 @@
  */
 package bts.sio.emacoeur.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -15,16 +15,16 @@ public class Professionnel {
         private int id;
         private String nom;
         private String prenom;
-        private Date dateNaissance; 
+        private LocalDate dateNaissance; 
         private int numeroBip;
         
         private String indiceTraitement;
-        private Date dateObtentionIndice;
+        private LocalDate dateObtentionIndice;
 
     public Professionnel() {
     }
 
-    public Professionnel(int id, String nom, String prenom, Date dateNaissance, int numeroBip, String indiceTraitement, Date dateObtentionIndice) {
+    public Professionnel(int id, String nom, String prenom, LocalDate dateNaissance, int numeroBip, String indiceTraitement, LocalDate dateObtentionIndice) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -46,7 +46,7 @@ public class Professionnel {
         return prenom;
     }
 
-    public Date getDateNaissance() {
+    public LocalDate getDateNaissance() {
         return dateNaissance;
     }
 
@@ -58,7 +58,7 @@ public class Professionnel {
         return indiceTraitement;
     }
 
-    public Date getDateObtentionIndice() {
+    public LocalDate getDateObtentionIndice() {
         return dateObtentionIndice;
     }
 
@@ -74,7 +74,7 @@ public class Professionnel {
         this.prenom = prenom;
     }
 
-    public void setDateNaissance(Date dateNaissance) {
+    public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
@@ -86,7 +86,7 @@ public class Professionnel {
         this.indiceTraitement = indiceTraitement;
     }
 
-    public void setDateObtentionIndice(Date dateObtentionIndice) {
+    public void setDateObtentionIndice(LocalDate dateObtentionIndice) {
         this.dateObtentionIndice = dateObtentionIndice;
     }
 
