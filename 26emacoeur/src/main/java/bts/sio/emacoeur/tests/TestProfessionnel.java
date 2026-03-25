@@ -5,8 +5,7 @@
 package bts.sio.emacoeur.tests;
 
 import bts.sio.emacoeur.model.Professionnel;
-import jakarta.ejb.Local;
-import java.time.Instant;
+import java.time.LocalDate;
 
 
 /**
@@ -21,13 +20,13 @@ public class TestProfessionnel {
         pro1.setId(1);
         pro1.setNom("Goerge");
         pro1.setPrenom("Pierre");
-        //pro1.setDateNaissance(Local.date.parse("2020-10-06"));
+        pro1.setDateNaissance(LocalDate.of(1985,6,15));
         pro1.setIndiceTraitement("je sais pas ce que c'est");
         pro1.setNumeroBip(101);
-        //pro1.setDateObtentionIndice(Local.date.parse("2020-10-06"));
+        pro1.setDateObtentionIndice(LocalDate.of(1985,6,15));
         
        
-        System.out.println(pro1.getId()+" "+pro1.getNom()+" "+pro1.getPrenom()+" "+pro1.getIndiceTraitement()+" "+pro1.getNumeroBip());
+        System.out.println(pro1.getId()+" "+pro1.getNom()+" "+pro1.getPrenom()+" "+pro1.getIndiceTraitement()+" "+pro1.getNumeroBip()+" "+pro1.getDateNaissance()+" "+pro1.getDateObtentionIndice());
     }
     
 }
