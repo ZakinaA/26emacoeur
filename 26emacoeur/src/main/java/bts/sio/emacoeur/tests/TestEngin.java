@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package bts.sio.emacoeur.tests;
-
+import bts.sio.emacoeur.model.Caserne;
 import bts.sio.emacoeur.model.Engin;
 
-/**
- *
- * @author 
- */
 public class TestEngin {
     
     public static void main(String[] args) {
@@ -23,6 +15,22 @@ public class TestEngin {
         System.out.println(en.getId()+" "+en.getType());
         System.out.println(en2.getId()+" "+en2.getType());
         
+        Caserne c1 = new Caserne(1, "Yvetot", "Yvetot", "76190", "1 rue de la paix");
+        Caserne c2 = new Caserne(2, "Caen", "Caen", "14000", "5 rue de la mer");
+        
+        en.addUneCaserne(c1);
+        en.addUneCaserne(c2);
+        c1.addUnEngin(en);
+        c2.addUnEngin(en);
+        
+        System.out.println("\n=== Casernes de l'engin " + en.getId() + " ===");
+        for (Caserne c : en.getDesCasernes()) {
+            System.out.println("  - " + c.getNom() + " | " + c.getVille());
+        }
+        
+        System.out.println("\n=== Engins de la caserne " + c1.getNom() + " ===");
+        for (Engin e : c1.getDesEngins()) {
+            System.out.println("  - Engin " + e.getId() + " | " + e.getType());
+        }
     }
-    
 }
