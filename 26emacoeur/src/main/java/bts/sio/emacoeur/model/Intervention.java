@@ -14,6 +14,7 @@ public class Intervention {
     
     private int id;
     private LocalDate dateIntervention;
+    private TypeIntervention typeintervention;
 
     public Intervention() {
     }
@@ -21,6 +22,20 @@ public class Intervention {
     public Intervention(int id, LocalDate dateIntervention) {
         this.id = id;
         this.dateIntervention = dateIntervention;
+    }
+
+    public Intervention(int id, LocalDate dateIntervention, TypeIntervention typeintervention) {
+        this.id = id;
+        this.dateIntervention = dateIntervention;
+        this.typeintervention = typeintervention;
+    }
+
+    public TypeIntervention getTypeintervention() {
+        return typeintervention;
+    }
+
+    public void setTypeintervention(TypeIntervention typeintervention) {
+        this.typeintervention = typeintervention;
     }
 
     public int getId() {
