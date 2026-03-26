@@ -15,6 +15,7 @@ public class Engin {
     private int id; 
     private String type;
     private ArrayList<Caserne> desCasernes;
+    private ArrayList<Intervention> desInterventions;
     
     public Engin(int id,String type) {
         this.id = id;
@@ -25,10 +26,26 @@ public class Engin {
         
     }
 
-    public Engin(int id, String type, ArrayList<Caserne> desCasernes) {
+    public Engin(int id, String type, ArrayList<Caserne> desCasernes, ArrayList<Intervention> desInterventions) {
         this.id = id;
         this.type = type;
         this.desCasernes = desCasernes;
+        this.desInterventions = desInterventions;
+    }
+
+    public ArrayList<Intervention> getDesInterventions() {
+        return desInterventions;
+    }
+
+    public void setDesInterventions(ArrayList<Intervention> desInterventions) {
+        this.desInterventions = desInterventions;
+    }
+    
+    public void addUneIntervention (Intervention uneIntervention) {
+        if (desInterventions == null){
+            desInterventions = new ArrayList<Intervention>();
+        }
+        desInterventions.add(uneIntervention);
     }
 
     public ArrayList<Caserne> getDesCasernes() {
