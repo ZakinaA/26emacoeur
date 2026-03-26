@@ -15,7 +15,7 @@ public class Profession {
     private int id;
     private String libelle;
     private String ville;
-    private ArrayList<Volontaire> desVolontaires;
+    private ArrayList<Pompier> lesPompiers;
 
     public Profession() {
     }
@@ -38,10 +38,6 @@ public class Profession {
         return ville;
     }
 
-    public ArrayList<Volontaire> getDesVolontaires() {
-        return desVolontaires;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -53,15 +49,21 @@ public class Profession {
     public void setVille(String ville) {
         this.ville = ville;
     }
-
-    public void setDesVolontaires(ArrayList<Volontaire> desVolontaires) {
-        this.desVolontaires = desVolontaires;
+    
+    public ArrayList<Pompier> getLesPompiers() {
+        return lesPompiers;
     }
 
-    public void addUnVolontaire(Volontaire unVolontaire) {
-        if (desVolontaires == null) {
-            desVolontaires = new ArrayList<Volontaire>();
-        }
-        desVolontaires.add(unVolontaire);
+    public void setLesPompiers(ArrayList<Pompier> lesPompiers) {
+        this.lesPompiers = lesPompiers;
     }
+    
+     public void addUnPompier(Pompier unPompier) {
+         if (lesPompiers == null){
+             lesPompiers = new ArrayList<Pompier>();
+         }
+        lesPompiers.add(unPompier);
+    }
+    
+    
 }
