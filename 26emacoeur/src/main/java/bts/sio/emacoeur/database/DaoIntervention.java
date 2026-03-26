@@ -10,4 +10,6 @@ package bts.sio.emacoeur.database;
  */
 public class DaoIntervention {
     
+    
+    
 }

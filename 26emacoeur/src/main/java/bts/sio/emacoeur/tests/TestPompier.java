@@ -8,6 +8,7 @@ import bts.sio.emacoeur.model.Caserne;
 import bts.sio.emacoeur.model.Grades;
 import bts.sio.emacoeur.model.Intervention;
 import bts.sio.emacoeur.model.Pompier;
+import java.time.LocalDate;
 import bts.sio.emacoeur.model.Profession;
 import java.time.LocalDate;
 
