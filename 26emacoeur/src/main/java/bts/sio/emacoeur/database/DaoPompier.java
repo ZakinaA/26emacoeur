@@ -32,14 +32,15 @@ public class DaoPompier {
         try {
             // Requête corrigée (ajout de pom.nom et des virgules/espaces)
             requete = cnx.prepareStatement(
-                "SELECT pom.id as pom_id, pom.nom as pom_nom, pom.prenom as pom_prenom, " +
-                "pom.dateNaissance as pom_dateNaissance, pom.numeroBip as pom_numeroBip, " +
-                "pom.statut as pom_statut, pro.id as pro_id, pro.libelle as pro_libelle, " +
-                "gra.id as gra_id, gra.libelle as gra_libelle, cas.id as cas_id, cas.nom as cas_nom " +
-                "FROM pompier pom " +
-                "INNER JOIN profession pro ON pom.profession_id = pro.id " +
-                "INNER JOIN grades gra ON pom.grades_id = gra.id " +
-                "INNER JOIN caserne cas ON pom.caserne_id = cas.id"
+                    "SELECT pom.pom_id, pom.pom_nom, pom.pom_prenom, " +
+                    "pom.pom_dateNaissance, pom.pom_numeroBip, pom.pom_statut, " +
+                    "pro.pro_id, pro.pro_libelle, " +
+                    "gra.gra_id, gra.gra_libelle, " +
+                    "cas.cas_id, cas.cas_nom " +
+                    "FROM pompier pom " +
+                    "INNER JOIN profession pro ON pom.pro_id = pro.pro_id " +
+                    "INNER JOIN grades gra ON pom.gra_id = gra.gra_id " +
+                    "INNER JOIN caserne cas ON pom.cas_id = cas.cas_id"
             );
             
             rs = requete.executeQuery();

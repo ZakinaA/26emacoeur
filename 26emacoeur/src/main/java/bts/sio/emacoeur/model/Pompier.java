@@ -22,6 +22,7 @@ public class Pompier {
     private Caserne caserne;
     private Profession profession;
     private ArrayList<Intervention> lesInterventions;
+    private String statut;
 
     public Pompier() {
     }
@@ -124,4 +125,26 @@ public class Pompier {
     public void setProfession(Profession profession) {
         this.profession = profession;
     }
+
+    public Pompier(int id, String nom, String prenom, LocalDate dateNaissance, int numeroBip, Grades grades, Caserne caserne, Profession profession, ArrayList<Intervention> lesInterventions, String statut) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.numeroBip = numeroBip;
+        this.grades = grades;
+        this.caserne = caserne;
+        this.profession = profession;
+        this.lesInterventions = lesInterventions;
+        this.statut = statut;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+    
 }
