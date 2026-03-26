@@ -5,18 +5,20 @@
 package bts.sio.emacoeur.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
  * @author ts1sio
  */
 public class Volontaire {
-    
+
     private int id;
     private String nom;
     private String prenom;
     private LocalDate dateNaissance;
     private int numeroBip;
+    private Profession profession;
 
     public Volontaire() {
     }
@@ -49,6 +51,10 @@ public class Volontaire {
         return numeroBip;
     }
 
+    public Profession getProfession() {
+        return profession;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -67,5 +73,9 @@ public class Volontaire {
 
     public void setNumeroBip(int numeroBip) {
         this.numeroBip = numeroBip;
+    }
+
+    public void setProfession(Profession profession) {
+        this.profession = profession;
     }
 }
