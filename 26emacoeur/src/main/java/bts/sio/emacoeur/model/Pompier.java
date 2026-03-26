@@ -5,6 +5,7 @@
 package bts.sio.emacoeur.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,9 @@ public class Pompier {
     private String prenom;
     private LocalDate dateNaissance;
     private int numeroBip;
+    private Grades grades;
+    private Caserne caserne;
+    private ArrayList<Intervention> lesInterventions;
 
     public Pompier() {
     }
@@ -68,6 +72,40 @@ public class Pompier {
     public void setNumeroBip(int numeroBip) {
         this.numeroBip = numeroBip;
     }
+
+    public Grades getGrades() {
+        return grades;
+    }
+
+    public void setGrades(Grades grades) {
+        this.grades = grades;
+    }
+
+    public Caserne getCaserne() {
+        return caserne;
+    }
+
+    public void setCaserne(Caserne caserne) {
+        this.caserne = caserne;
+    }
+
+    public ArrayList<Intervention> getLesInterventions() {
+        return lesInterventions;
+    }
+
+    public void setLesInterventions(ArrayList<Intervention> lesInterventions) {
+        this.lesInterventions = lesInterventions;
+    }
+    
+    public void addUneIntervention (Intervention uneIntervention){
+        if (lesInterventions == null){
+            lesInterventions = new ArrayList<>();
+        }
+        lesInterventions.add(uneIntervention);
+    }
+    
+    
+    
     
     
 }

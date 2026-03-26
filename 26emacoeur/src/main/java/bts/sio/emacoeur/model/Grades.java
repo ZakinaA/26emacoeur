@@ -4,6 +4,8 @@
  */
 package bts.sio.emacoeur.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ts1sio
@@ -11,6 +13,7 @@ package bts.sio.emacoeur.model;
 public class Grades {
     private int id;
     private String libelle;
+    private ArrayList<Pompier> lesPompiers;
 
     public Grades() {
     }
@@ -34,6 +37,21 @@ public class Grades {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public ArrayList<Pompier> getLesPompiers() {
+        return lesPompiers;
+    }
+
+    public void setLesPompiers(ArrayList<Pompier> lesPompiers) {
+        this.lesPompiers = lesPompiers;
+    }
+    
+    public void addUnPompier (Pompier unPompier) {
+        if (lesPompiers == null) {
+            lesPompiers = new ArrayList<Pompier>();
+        }
+        lesPompiers.add(unPompier);
     }
     
     

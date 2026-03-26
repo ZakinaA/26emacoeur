@@ -18,6 +18,7 @@ public class Caserne {
     private String cp;
     private String rue;
     private ArrayList<Engin> desEngins;
+    private ArrayList<Pompier> lesPompiers;
     
 
     public Caserne() {
@@ -96,6 +97,21 @@ public class Caserne {
 
     public void setRue(String rue) {
         this.rue = rue;
+    }
+
+    public ArrayList<Pompier> getLesPompiers() {
+        return lesPompiers;
+    }
+
+    public void setLesPompiers(ArrayList<Pompier> lesPompier) {
+        this.lesPompiers = lesPompier;
+    }
+    
+    public void addUnPompier (Pompier unPompier){
+        if (lesPompiers == null){
+            lesPompiers = new ArrayList<>();
+        }
+        lesPompiers.add(unPompier);
     }
     
     
