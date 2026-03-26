@@ -8,6 +8,7 @@ import bts.sio.emacoeur.model.Caserne;
 import bts.sio.emacoeur.model.Grades;
 import bts.sio.emacoeur.model.Intervention;
 import bts.sio.emacoeur.model.Pompier;
+import bts.sio.emacoeur.model.Profession;
 import java.time.LocalDate;
 
 /**
@@ -27,6 +28,7 @@ public class TestPompier {
         //crée un grade       
         Grades unGrades = new Grades(4,"Caporal");
         Caserne uneCaserne = new Caserne(1,"Caserne Centrale","Paris","75001","Rue de Rivoli");
+        Profession uneProfession = new Profession(1,"Infirmier","Paris");
         
 
         System.out.println(" Le pompier " + pompier1.getPrenom()+ " " + pompier1.getNom() + " a le numero bip n :" +pompier1.getNumeroBip());
@@ -43,6 +45,7 @@ public class TestPompier {
         
         pompier1.setGrades(unGrades);
         pompier1.setCaserne(uneCaserne);
+        pompier1.setProfession(uneProfession);
         
          // Affichage des pompier de l'intervention
         System.out.println("\n=== pompier de l'intervention " + i1.getId() + " ===");
@@ -58,7 +61,7 @@ public class TestPompier {
         
         
         System.out.println(" Le pompier " + pompier1.getPrenom()+ " " + pompier1.getNom() + " a le numéro bip n°" +pompier1.getNumeroBip() +" dont le grade est " + pompier1.getGrades().getLibelle()
-        + " sa caserne est la " + pompier1.getCaserne().getNom() +" situé dans la ville de " + pompier1.getCaserne().getVille());
+        + " sa caserne est la " + pompier1.getCaserne().getNom() +" situé dans la ville de " + pompier1.getCaserne().getVille() + " et a pour profession : " + pompier1.getProfession());
 
     
 }

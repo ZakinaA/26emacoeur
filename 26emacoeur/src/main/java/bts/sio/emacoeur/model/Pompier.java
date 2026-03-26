@@ -20,6 +20,7 @@ public class Pompier {
     private int numeroBip;
     private Grades grades;
     private Caserne caserne;
+    private Profession profession;
     private ArrayList<Intervention> lesInterventions;
 
     public Pompier() {
@@ -103,9 +104,24 @@ public class Pompier {
         }
         lesInterventions.add(uneIntervention);
     }
-    
-    
-    
-    
-    
+
+    public Pompier(int id, String nom, String prenom, LocalDate dateNaissance, int numeroBip, Grades grades, Caserne caserne, Profession profession, ArrayList<Intervention> lesInterventions) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.numeroBip = numeroBip;
+        this.grades = grades;
+        this.caserne = caserne;
+        this.profession = profession;
+        this.lesInterventions = lesInterventions;
+    }
+
+    public Profession getProfession() {
+        return profession;
+    }
+
+    public void setProfession(Profession profession) {
+        this.profession = profession;
+    }
 }
