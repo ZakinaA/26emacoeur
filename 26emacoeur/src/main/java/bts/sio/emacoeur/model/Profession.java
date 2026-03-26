@@ -3,16 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package bts.sio.emacoeur.model;
+import java.util.ArrayList;
+
 
 /**
  *
  * @author ts1sio
  */
 public class Profession {
+    
     private int id;
     private String libelle;
     private String ville;
-    private Volontaire volontaire;
+    private ArrayList<Volontaire> desVolontaires;
 
     public Profession() {
     }
@@ -35,6 +38,10 @@ public class Profession {
         return ville;
     }
 
+    public ArrayList<Volontaire> getDesVolontaires() {
+        return desVolontaires;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -47,18 +54,14 @@ public class Profession {
         this.ville = ville;
     }
 
-    public Profession(int id, String libelle, String ville, Volontaire volontaire) {
-        this.id = id;
-        this.libelle = libelle;
-        this.ville = ville;
-        this.volontaire = volontaire;
+    public void setDesVolontaires(ArrayList<Volontaire> desVolontaires) {
+        this.desVolontaires = desVolontaires;
     }
 
-    public Volontaire getVolontaire() {
-        return volontaire;
-    }
-
-    public void setVolontaire(Volontaire volontaire) {
-        this.volontaire = volontaire;
+    public void addUnVolontaire(Volontaire unVolontaire) {
+        if (desVolontaires == null) {
+            desVolontaires = new ArrayList<Volontaire>();
+        }
+        desVolontaires.add(unVolontaire);
     }
 }

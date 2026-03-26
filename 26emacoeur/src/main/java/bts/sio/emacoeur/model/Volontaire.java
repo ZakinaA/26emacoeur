@@ -12,13 +12,13 @@ import java.util.ArrayList;
  * @author ts1sio
  */
 public class Volontaire {
-    
+
     private int id;
     private String nom;
     private String prenom;
     private LocalDate dateNaissance;
     private int numeroBip;
-    private ArrayList<Profession> desProfessions;
+    private Profession profession;
 
     public Volontaire() {
     }
@@ -51,6 +51,10 @@ public class Volontaire {
         return numeroBip;
     }
 
+    public Profession getProfession() {
+        return profession;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -71,18 +75,7 @@ public class Volontaire {
         this.numeroBip = numeroBip;
     }
 
-    public ArrayList<Profession> getDesProfessions() {
-        return desProfessions;
-    }
-
-    public void setDesProfessions(ArrayList<Profession> desProfessions) {
-        this.desProfessions = desProfessions;
-    }
-    
-    public void addUneProfession( Profession uneProfession){
-        if ( desProfessions == null ){
-            desProfessions = new ArrayList<Profession>();
-        }
-        desProfessions.add(uneProfession);
+    public void setProfession(Profession profession) {
+        this.profession = profession;
     }
 }
