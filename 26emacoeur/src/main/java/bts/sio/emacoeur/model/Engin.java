@@ -4,6 +4,8 @@
  */
 package bts.sio.emacoeur.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author natha
@@ -12,6 +14,7 @@ public class Engin {
     
     private int id; 
     private String type;
+    private ArrayList<Caserne> desCasernes;
     
     public Engin(int id,String type) {
         this.id = id;
@@ -20,6 +23,27 @@ public class Engin {
     
     public Engin(){
         
+    }
+
+    public Engin(int id, String type, ArrayList<Caserne> desCasernes) {
+        this.id = id;
+        this.type = type;
+        this.desCasernes = desCasernes;
+    }
+
+    public ArrayList<Caserne> getDesCasernes() {
+        return desCasernes;
+    }
+
+    public void setDesCasernes(ArrayList<Caserne> desCasernes) {
+        this.desCasernes = desCasernes;
+    }
+    
+    public void addUneCaserne (Caserne uneCaserne) {
+        if (desCasernes == null) {
+            desCasernes = new ArrayList<Caserne>();
+        }
+        desCasernes.add(uneCaserne);
     }
 
     public int getId() {
