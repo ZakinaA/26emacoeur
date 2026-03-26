@@ -22,7 +22,7 @@ public class TestPompier {
         pompier1.setNumeroBip(101);
         
         
-        System.out.println(" Le pompier " + pompier1.getPrenom()+ " " + pompier1.getNom() + " a le numéro bip n°" +pompier1.getNumeroBip());
+        System.out.println(" Le pompier " + pompier1.getPrenom()+ " " + pompier1.getNom() + " a le numero bip n :" +pompier1.getNumeroBip());
     
 }
 }
