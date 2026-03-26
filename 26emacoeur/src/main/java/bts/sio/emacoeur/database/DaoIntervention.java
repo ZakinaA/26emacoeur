@@ -31,7 +31,10 @@ public class DaoIntervention {
         ArrayList<Intervention> desInters = new ArrayList<Intervention>();
         try{
 
-            requete=cnx.prepareStatement(" select ");
+            requete=cnx.prepareStatement(" select int_id as i_id, int_dataIntervention as i_dateInter, typ_id as ty_id, typ_libelle as ty_libelle \n"
+                        +"from intervention \n"
+                        +"join Type_intervention \n"
+                        +"on intervention.int_id = type_intervention.int_id;");
             
             rs=requete.executeQuery();
             
