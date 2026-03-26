@@ -15,6 +15,7 @@ public class TypeIntervention {
     private int id;
     private String libelle;
     private ArrayList<Intervention> desInterventions;
+    private ArrayList<Engin> desEngins;
     
 
     public TypeIntervention() {
@@ -25,10 +26,26 @@ public class TypeIntervention {
         this.libelle = libelle;
     }
 
-    public TypeIntervention(int id, String libelle, ArrayList<Intervention> desInterventions) {
+    public TypeIntervention(int id, String libelle, ArrayList<Intervention> desInterventions, ArrayList<Engin> desEngins) {
         this.id = id;
         this.libelle = libelle;
         this.desInterventions = desInterventions;
+        this.desEngins = desEngins;
+    }
+
+    public ArrayList<Engin> getDesEngins() {
+        return desEngins;
+    }
+
+    public void setDesEngins(ArrayList<Engin> desEngins) {
+        this.desEngins = desEngins;
+    }
+    
+    public void addDesEngins (Engin unEngin) {
+        if (desEngins == null) {
+            desEngins = new ArrayList<Engin>();
+        }
+        desEngins.add(unEngin);
     }
 
     public ArrayList<Intervention> getDesInterventions() {
