@@ -17,6 +17,7 @@ public class Pompier {
     private String prenom;
     private LocalDate dateNaissance;
     private int numeroBip;
+    private Grades grades;
 
     public Pompier() {
     }
@@ -68,6 +69,15 @@ public class Pompier {
     public void setNumeroBip(int numeroBip) {
         this.numeroBip = numeroBip;
     }
+
+    public Grades getGrades() {
+        return grades;
+    }
+
+    public void setGrades(Grades grades) {
+        this.grades = grades;
+    }
+    
     
     
 }

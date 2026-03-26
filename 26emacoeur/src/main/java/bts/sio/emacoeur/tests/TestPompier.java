@@ -4,6 +4,7 @@
  */
 package bts.sio.emacoeur.tests;
 
+import bts.sio.emacoeur.model.Grades;
 import bts.sio.emacoeur.model.Pompier;
 import java.time.LocalDate;
 
@@ -21,8 +22,12 @@ public class TestPompier {
         pompier1.setDateNaissance(LocalDate.of(1985,6,15));
         pompier1.setNumeroBip(101);
         
+        Grades unGrades = new Grades(4,"Caporal");
         
-        System.out.println(" Le pompier " + pompier1.getPrenom()+ " " + pompier1.getNom() + " a le numéro bip n°" +pompier1.getNumeroBip());
+        pompier1.setGrades(unGrades);
+        
+        
+        System.out.println(" Le pompier " + pompier1.getPrenom()+ " " + pompier1.getNom() + " a le numéro bip n°" +pompier1.getNumeroBip() +" dont le grade est " + pompier1.getGrades().getLibelle());
     
 }
 }
