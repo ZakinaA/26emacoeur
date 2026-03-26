@@ -19,5 +19,6 @@ public class TestProfession {
     profession1.setVille("Paris");
     
     System.out.println("La profession n°" + profession1.getId() + " est " + profession1.getLibelle() + " et se trouve " + profession1.getVille() );
-}
+    
+    }
 }

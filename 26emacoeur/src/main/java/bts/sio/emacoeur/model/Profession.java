@@ -12,6 +12,7 @@ public class Profession {
     private int id;
     private String libelle;
     private String ville;
+    private Volontaire volontaire;
 
     public Profession() {
     }
@@ -45,7 +46,19 @@ public class Profession {
     public void setVille(String ville) {
         this.ville = ville;
     }
-    
-    
-    
+
+    public Profession(int id, String libelle, String ville, Volontaire volontaire) {
+        this.id = id;
+        this.libelle = libelle;
+        this.ville = ville;
+        this.volontaire = volontaire;
+    }
+
+    public Volontaire getVolontaire() {
+        return volontaire;
+    }
+
+    public void setVolontaire(Volontaire volontaire) {
+        this.volontaire = volontaire;
+    }
 }

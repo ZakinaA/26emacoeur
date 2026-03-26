@@ -5,6 +5,7 @@
 package bts.sio.emacoeur.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Volontaire {
     private String prenom;
     private LocalDate dateNaissance;
     private int numeroBip;
+    private ArrayList<Profession> desProfessions;
 
     public Volontaire() {
     }
@@ -67,5 +69,20 @@ public class Volontaire {
 
     public void setNumeroBip(int numeroBip) {
         this.numeroBip = numeroBip;
+    }
+
+    public ArrayList<Profession> getDesProfessions() {
+        return desProfessions;
+    }
+
+    public void setDesProfessions(ArrayList<Profession> desProfessions) {
+        this.desProfessions = desProfessions;
+    }
+    
+    public void addUneProfession( Profession uneProfession){
+        if ( desProfessions == null ){
+            desProfessions = new ArrayList<Profession>();
+        }
+        desProfessions.add(uneProfession);
     }
 }
