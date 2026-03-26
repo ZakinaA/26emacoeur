@@ -18,6 +18,7 @@ public class Pompier {
     private LocalDate dateNaissance;
     private int numeroBip;
     private Grades grades;
+    private Caserne caserne;
 
     public Pompier() {
     }
@@ -77,6 +78,16 @@ public class Pompier {
     public void setGrades(Grades grades) {
         this.grades = grades;
     }
+
+    public Caserne getCaserne() {
+        return caserne;
+    }
+
+    public void setCaserne(Caserne caserne) {
+        this.caserne = caserne;
+    }
+    
+    
     
     
     

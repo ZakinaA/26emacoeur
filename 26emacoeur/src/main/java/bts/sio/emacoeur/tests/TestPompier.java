@@ -4,6 +4,7 @@
  */
 package bts.sio.emacoeur.tests;
 
+import bts.sio.emacoeur.model.Caserne;
 import bts.sio.emacoeur.model.Grades;
 import bts.sio.emacoeur.model.Pompier;
 import java.time.LocalDate;
@@ -23,11 +24,14 @@ public class TestPompier {
         pompier1.setNumeroBip(101);
         
         Grades unGrades = new Grades(4,"Caporal");
+        Caserne uneCaserne = new Caserne(1,"Caserne Centrale","Paris","75001","Rue de Rivoli");
         
         pompier1.setGrades(unGrades);
+        pompier1.setCaserne(uneCaserne);
         
         
-        System.out.println(" Le pompier " + pompier1.getPrenom()+ " " + pompier1.getNom() + " a le numéro bip n°" +pompier1.getNumeroBip() +" dont le grade est " + pompier1.getGrades().getLibelle());
+        System.out.println(" Le pompier " + pompier1.getPrenom()+ " " + pompier1.getNom() + " a le numéro bip n°" +pompier1.getNumeroBip() +" dont le grade est " + pompier1.getGrades().getLibelle()
+        + " sa ceserne est la " + pompier1.getCaserne().getNom() +" situé dans la ville de " + pompier1.getCaserne().getVille());
     
 }
 }
