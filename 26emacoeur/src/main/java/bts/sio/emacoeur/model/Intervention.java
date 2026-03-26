@@ -5,6 +5,7 @@
 package bts.sio.emacoeur.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,7 @@ public class Intervention {
     private int id;
     private LocalDate dateIntervention;
     private TypeIntervention typeintervention;
+    private ArrayList<Pompier> lesPompiers;
 
     public Intervention() {
     }
@@ -53,8 +55,21 @@ public class Intervention {
     public void setDateIntervention(LocalDate dateIntervention) {
         this.dateIntervention = dateIntervention;
     }
+
+    public ArrayList<Pompier> getLesPompiers() {
+        return lesPompiers;
+    }
+
+    public void setLesPompiers(ArrayList<Pompier> lesPompiers) {
+        this.lesPompiers = lesPompiers;
+    }
     
-    
+    public void addUnPompier (Pompier unPompier){
+        if (lesPompiers == null){
+            lesPompiers = new ArrayList<>();
+        }
+        lesPompiers.add(unPompier);
+    }
     
     
     
