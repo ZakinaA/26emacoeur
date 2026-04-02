@@ -23,7 +23,6 @@
         <url-pattern>/PompierServlet/consulterPompier</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
         <servlet-name>InterventionServlet</servlet-name>
         <servlet-class>bts.sio.emacoeur.servlet.InterventionServlet</servlet-class>
