@@ -14,6 +14,10 @@
         <servlet-name>PompierServlet</servlet-name>
         <url-pattern>/PompierServlet/listerPompier</url-pattern>
     </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>PompierServlet</servlet-name>
+        <url-pattern>/PompierServlet/consulterPompier</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
