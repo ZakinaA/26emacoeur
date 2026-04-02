@@ -26,6 +26,7 @@
                 <th>Profession</th>
                 <th>Grade</th>
                 <th>Caserne</th>
+              
             </tr>
             <%
                 ArrayList<Pompier> lesPompiers = (ArrayList<Pompier>) request.getAttribute("pLesPompiers");
