@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,9 +30,10 @@
                 padding: 20px;
             }
 
-            .btn-menu {
+            .btn {
                 background-color: white;
                 color: #2c3e50;
+                text-decoration: none;
                 width: 180px;
                 height: 150px;
                 display: flex;
@@ -44,11 +44,8 @@
                 border: 1px solid #ddd;
             }
 
-            .btn-menu:hover {
+            .btn:hover {
                 background-color: #c0392b;
-                color: white;
-                transform: scale(1.05);
-                border-color: #c0392b;
             }
 
             .icon {
@@ -64,26 +61,22 @@
     </head>
     <body>
 
-        <h1>EmaCoeur : Gestion SDIS</h1>
+        <h1>EmaCoeur : Accueil de la gestion SDIS</h1>
 
         <div class="menu-container">
             
-            <a href="PompierServlet/listerPompier" class="btn-menu">
-                <span class="icon"></span>
+            <a href="PompierServlet/listerPompier" class="btn">
                 <span class="label">Pompiers</span>
             </a>
 
-            <a href="CaserneServlet/listerCaserne" class="btn-menu">
-                <span class="icon"></span>
+            <a href="CaserneServlet/listerCaserne" class="btn">
                 <span class="label">Casernes</span>
             </a>
 
-            <a href="InterventionServlet/listerIntervention" class="btn-menu">
-                <span class="icon"></span>
+            <a href="InterventionServlet/listerIntervention" class="btn">
                 <span class="label">Interventions</span>
             </a>
 
         </div>
-
     </body>
 </html>
