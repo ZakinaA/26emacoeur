@@ -7,7 +7,7 @@ package bts.sio.emacoeur.tests;
 //import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoCaserne;
 import bts.sio.emacoeur.model.Caserne;
-import database.ConnexionBdd;
+import bts.sio.emacoeur.database.ConnexionBdd;
 import java.sql.*;
 import java.util.ArrayList;
 

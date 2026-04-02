@@ -7,7 +7,7 @@ package bts.sio.emacoeur.servlet;
 //import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoIntervention;
 import bts.sio.emacoeur.model.Intervention;
-import database.ConnexionBdd;
+import bts.sio.emacoeur.database.ConnexionBdd;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;

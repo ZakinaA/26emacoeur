@@ -4,7 +4,9 @@
  */
 package bts.sio.emacoeur.servlet;
 
+import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoPompier;
+import bts.sio.emacoeur.model.Pompier;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,11 +30,9 @@ public class PompierServlet extends HttpServlet {
     @Override
     public void init()
     {     
-        System.out.println("Servlet init");
-        ServletContext servletContext=getServletContext();
-        cnx = (Connection)servletContext.getAttribute("connection");     
+        cnx = ConnexionBdd.ouvrirConnexion();
     }
-
+        
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -84,9 +84,20 @@ public class PompierServlet extends HttpServlet {
                 System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
             }
         }
+        else if (url.equals("/26emacoeur/PompierServlet/consulterPompier")) {
+            
+            String idParam = request.getParameter("id");
+            int idPompier = Integer.parseInt(idParam);
+            
+            Pompier p = DaoPompier.getPompierById(cnx, idPompier);
+            // Transmettre l'objet à la JSP (vérifiez que le nom "pLEleve" est celui utilisé dans consulter.jsp)
+            request.setAttribute("pPompier", p);
+            // Vérifiez le chemin vers votre fichier JSP
+            getServletContext().getRequestDispatcher("/vues/pompier/consulterPompier.jsp").forward(request, response);
+        }
         processRequest(request, response);
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *

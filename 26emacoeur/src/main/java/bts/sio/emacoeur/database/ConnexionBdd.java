@@ -2,13 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package database;
+package bts.sio.emacoeur.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
 
 /**
  *
@@ -31,7 +28,11 @@ public class ConnexionBdd {
         }     
         try {
             //obtention de la connexion
-            connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3307/26emacoeur","root","");
+
+        //connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/26emacoeur","root","");
+        connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3307/26emacoeur","root","");
+
+
             System.out.println("Connexion OK");
            
         } catch (SQLException e) {
@@ -90,3 +91,5 @@ public class ConnexionBdd {
         }
     }  
 }
+
+
