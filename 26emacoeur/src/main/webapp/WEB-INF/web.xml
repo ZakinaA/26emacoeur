@@ -3,21 +3,34 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
    version="6.0">
+
+    <!-- Déclaration du servlet Pompier -->
     <servlet>
         <servlet-name>PompierServlet</servlet-name>
-        <servlet-class>bts.sio.emacoeur.servlet</servlet-class>
+        <!-- CORRECTION 1 : nom de classe complet, pas juste le package -->
+        <servlet-class>bts.sio.emacoeur.servlet.PompierServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PompierServlet</servlet-name>
-        <url-pattern>/PompierServlet/</url-pattern>
+        <!-- CORRECTION 2 : suppression du slash final -->
+        <url-pattern>/PompierServlet</url-pattern>
     </servlet-mapping>
+
+    <!-- CORRECTION 3 : déclaration manquante du servlet Intervention -->
+    <servlet>
+        <servlet-name>InterventionServlet</servlet-name>
+        <servlet-class>bts.sio.emacoeur.servlet.InterventionServlet</servlet-class>
+    </servlet>
+    <!-- CORRECTION 4 : nom cohérent (InterventionServlet) -->
     <servlet-mapping>
-        <servlet-name>interventionServlet</servlet-name>
+        <servlet-name>InterventionServlet</servlet-name>
         <url-pattern>/InterventionServlet/listerIntervention</url-pattern>
     </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+
 </web-app>
