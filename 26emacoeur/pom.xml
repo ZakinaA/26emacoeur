@@ -34,7 +34,7 @@
     </dependencies>
     
     <build>
-        <finalName>26emacoeur02</finalName>
+        <finalName>26emacoeur</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
