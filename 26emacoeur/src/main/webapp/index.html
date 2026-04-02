@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
+        <title>Emacoeur - Accueil</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+            h1 { color: #2c3e50; }
+            ul { list-style-type: none; padding: 0; }
+            li { margin: 10px 0; }
+            a { 
+                text-decoration: none; 
+                color: #fff; 
+                background-color: #3498db; 
+                padding: 10px 20px; 
+                border-radius: 5px; 
+                display: inline-block;
+                width: 200px;
+                text-align: center;
+            }
+            a:hover { background-color: #2980b9; }
+        </style>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Gestion Emacoeur</h1>
+        <p>Bienvenue sur l'application de gestion des pompiers. Choisissez une action :</p>
+        
+        <nav>
+            <ul>
+                <li>
+                    <a href="PompierServlet/listerPompier">Liste des Pompiers</a>
+                </li>
+                
+                <li>
+                    <a href="CaserneServlet/listerCaserne">Liste des Casernes</a>
+                </li>
+                
+                <li>
+                    <a href="InterventionServlet/listerIntervention">Liste des Interventions</a>
+                </li>
+            </ul>
+        </nav>
     </body>
 </html>

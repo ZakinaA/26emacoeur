@@ -32,15 +32,15 @@ public class DaoPompier {
         try {
             
             requete = cnx.prepareStatement(
-                    "SELECT pom.pom_id, pom.pom_nom, pom.pom_prenom, " +
+                    "select pom.pom_id, pom.pom_nom, pom.pom_prenom, " +
                     "pom.pom_dateNaissance, pom.pom_numeroBip, pom.pom_statut, " +
                     "pro.pro_id, pro.pro_libelle, " +
                     "gra.gra_id, gra.gra_libelle, " +
                     "cas.cas_id, cas.cas_nom " +
-                    "FROM pompier pom " +
-                    "INNER JOIN profession pro ON pom.pro_id = pro.pro_id " +
-                    "INNER JOIN grades gra ON pom.gra_id = gra.gra_id " +
-                    "INNER JOIN caserne cas ON pom.cas_id = cas.cas_id"
+                    "from pompier pom " +
+                    "inner join profession pro ON pom.pro_id = pro.pro_id " +
+                    "inner join grades gra ON pom.gra_id = gra.gra_id " +
+                    "inner join caserne cas ON pom.cas_id = cas.cas_id"
             );
             
             rs = requete.executeQuery();

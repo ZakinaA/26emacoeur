@@ -30,7 +30,8 @@ public class ConnexionBdd {
             //obtention de la connexion
 
         //connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/26emacoeur","root","");
-        connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3307/26emacoeur","root","");
+        connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/26emacoeur","Distuser","@MPdist");
+        //connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3307/26emacoeur","Distuser","@MPdist");
 
 
             System.out.println("Connexion OK");
