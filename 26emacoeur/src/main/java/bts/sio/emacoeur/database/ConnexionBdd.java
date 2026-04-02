@@ -69,5 +69,10 @@ public class ConnexionBdd implements ServletContextListener {
             }
             catch(Exception e) { System.out.println("Erreur fermeture Connection"); }
         }
+<<<<<<< HEAD
     } 
+=======
+    }
+    
+>>>>>>> 191d05dfc923a252863377f315723f563f71fe4d
 }
