@@ -4,6 +4,7 @@
  */
 package bts.sio.emacoeur.servlet;
 
+import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoCaserne;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
@@ -21,14 +22,12 @@ import java.util.ArrayList;
  */
 public class CaserneServlet extends HttpServlet {
     
-       Connection cnx ;
+    Connection cnx ;
             
     @Override
     public void init()
     {     
-        System.out.println("Servlet init");
-        ServletContext servletContext=getServletContext();
-        cnx = (Connection)servletContext.getAttribute("connection");     
+        cnx = ConnexionBdd.ouvrirConnexion();
     }
 
     /**
