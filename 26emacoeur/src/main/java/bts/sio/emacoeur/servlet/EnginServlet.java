@@ -61,20 +61,14 @@ public class EnginServlet extends HttpServlet {
     @Override
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-    String url = request.getRequestURI();
-    
-    if(url.equals("/26emacoeur/EnginServlet/listerEngin"))
-    {
-        // Ouvrir la connexion
+
+    String url = request.getServletPath(); // ✅ getServletPath() au lieu de getRequestURI()
+
+    if (url.equals("/EnginServlet/listerEngin")) {
         Connection cnx = ConnexionBdd.ouvrirConnexion();
-        
-        // Charger la liste avec la connexion
         ArrayList<Engin> desEngins = DaoEngin.getLesEngins(cnx);
         request.setAttribute("pDesEngins", desEngins);
-        
-        // Fermer la connexion
         ConnexionBdd.fermerConnexion(cnx);
-        
         getServletContext().getRequestDispatcher("/vues/engin/listerEngin.jsp").forward(request, response);
         return;
     }
@@ -104,5 +98,4 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

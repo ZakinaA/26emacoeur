@@ -37,7 +37,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EnginServlet</servlet-name>
-        <url-pattern>/EnginServlet</url-pattern>
+        <url-pattern>/EnginServlet/listerEngin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
