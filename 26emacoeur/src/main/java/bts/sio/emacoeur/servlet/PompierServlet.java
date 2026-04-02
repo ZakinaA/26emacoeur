@@ -7,6 +7,7 @@ package bts.sio.emacoeur.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author ts1sio
  */
+@WebServlet(urlPatterns = {"/PompierServlet/*"})
 public class PompierServlet extends HttpServlet {
 
     /**
@@ -55,6 +57,12 @@ public class PompierServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String url = request.getRequestURI();
+        
+        if(url.equals("/emacoeur/PompierServlet/listerPompier"))
+        {
+            getServletContext().getRequestDispatcher("/vues/pompier/listerPompier.jsp");
+        }
         processRequest(request, response);
     }
 
