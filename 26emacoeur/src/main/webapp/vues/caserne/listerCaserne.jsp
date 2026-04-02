@@ -21,33 +21,27 @@
             %>
             <table>  
             <thead>
-                <tr>             
+                <tr>  
                     <th>id</th>
                     <th>nom</th>
-                    <th>ville</th>               
+                    <th>ville</th>        
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <%
-                        for (Caserne c : lesCasernes)
-                        {              
-                            out.println("<td>");
-                            out.println(c.getId());
-                            out.println("</a></td>");
+    <%
+        for (Caserne c : lesCasernes) { 
+            // On ouvre la ligne AU DÉBUT de chaque passage de boucle
+            out.println("<tr>");
 
-                            out.println("<td>");
-                            out.println(c.getNom());
-                            out.println("</td>");
+            out.println("<td>" + c.getId() + "</td>");
+            out.println("<td>" + c.getNom() + "</td>");
+            out.println("<td>" + c.getVille() + "</td>");
 
-                            out.println("<td>");
-                            out.println(c.getVille());
-                            out.println("</td>");
-                            
-                        }
-                    %>
-                </tr>
-            </tbody>
+            // On ferme la ligne À LA FIN de chaque passage de boucle
+            out.println("</tr>");
+        }
+    %>
+</tbody>
         </table>
     </body>
 </html>

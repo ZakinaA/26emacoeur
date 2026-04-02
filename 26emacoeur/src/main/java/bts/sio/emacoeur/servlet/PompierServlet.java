@@ -4,6 +4,8 @@
  */
 package bts.sio.emacoeur.servlet;
 
+import bts.sio.emacoeur.database.DaoPompier;
+import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,13 +13,25 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
  * @author ts1sio
  */
-@WebServlet(urlPatterns = {"/PompierServlet/*"})
 public class PompierServlet extends HttpServlet {
+    
+    Connection cnx ;
+            
+    @Override
+    public void init()
+    {     
+        System.out.println("Servlet init");
+        ServletContext servletContext=getServletContext();
+        cnx = (Connection)servletContext.getAttribute("connection");     
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -59,9 +73,16 @@ public class PompierServlet extends HttpServlet {
             throws ServletException, IOException {
         String url = request.getRequestURI();
         
-        if(url.equals("/emacoeur/PompierServlet/listerPompier"))
+        if(url.equals("/26emacoeur/PompierServlet/listerPompier"))
         {
-            getServletContext().getRequestDispatcher("/vues/pompier/listerPompier.jsp");
+            try {
+                ArrayList lesPompiers = DaoPompier.getLesPompiers(cnx);
+                request.setAttribute("pLesPompiers", lesPompiers);
+                getServletContext().getRequestDispatcher("/vues/pompier/listerPompier.jsp").forward(request, response);
+                return;
+            } catch (SQLException ex) {
+                System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
         }
         processRequest(request, response);
     }
