@@ -4,6 +4,7 @@
  */
 package bts.sio.emacoeur.servlet;
 
+import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoPompier;
 import bts.sio.emacoeur.model.Pompier;
 import jakarta.servlet.ServletContext;
@@ -29,12 +30,9 @@ public class PompierServlet extends HttpServlet {
     @Override
     public void init()
     {     
-        System.out.println("Servlet init");
-        ServletContext servletContext=getServletContext();
-        cnx = (Connection)servletContext.getAttribute("connection");     
+        cnx = ConnexionBdd.ouvrirConnexion();
     }
         
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
