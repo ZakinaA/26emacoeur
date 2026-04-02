@@ -4,9 +4,10 @@
  */
 package bts.sio.emacoeur.tests;
 
-import bts.sio.emacoeur.database.ConnexionBdd;
+//import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoCaserne;
 import bts.sio.emacoeur.model.Caserne;
+import database.ConnexionBdd;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -25,6 +26,11 @@ public class TestDaoCaserne {
         for (Caserne c : lesCasernes){
             System.out.println(". " + c.getNom() + "  " + c.getVille() + "  " + c.getCp() + "  " + c.getRue());
         }
+        
+        //Test getCaserneById
+        Caserne c = DaoCaserne.getCaserneById(cnx, 1);
+        System.out.println(". " + c.getNom() + "  " + c.getVille() + "  " + c.getCp() + "  " + c.getRue());
+        
         ConnexionBdd.fermerConnexion(cnx);
     }
 }

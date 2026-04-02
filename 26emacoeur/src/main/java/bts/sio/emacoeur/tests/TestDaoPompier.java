@@ -4,9 +4,10 @@
  */
 package bts.sio.emacoeur.tests;
 
-import bts.sio.emacoeur.database.ConnexionBdd;
+//import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoPompier;
 import bts.sio.emacoeur.model.Pompier;
+import database.ConnexionBdd;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -1,8 +1,9 @@
 package bts.sio.emacoeur.tests;
 
-import bts.sio.emacoeur.database.ConnexionBdd;
+//import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoIntervention;
 import bts.sio.emacoeur.model.Intervention;
+import database.ConnexionBdd;
 import java.sql.Connection;
 import java.util.ArrayList;
 
