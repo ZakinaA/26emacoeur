@@ -10,6 +10,10 @@
         <servlet-name>PompierServlet</servlet-name>
         <servlet-class>bts.sio.emacoeur.servlet.PompierServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CaserneServlet</servlet-name>
+        <servlet-class>bts.sio.emacoeur.servlet.CaserneServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PompierServlet</servlet-name>
         <url-pattern>/PompierServlet/listerPompier</url-pattern>
@@ -18,9 +22,27 @@
         <servlet-name>PompierServlet</servlet-name>
         <url-pattern>/PompierServlet/consulterPompier</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
+
+    <servlet>
+        <servlet-name>InterventionServlet</servlet-name>
+        <servlet-class>bts.sio.emacoeur.servlet.InterventionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InterventionServlet</servlet-name>
+        <url-pattern>/InterventionServlet/listerIntervention</url-pattern>
+    </servlet-mapping>
+
+=======
+    <servlet-mapping>
+        <servlet-name>CaserneServlet</servlet-name>
+        <url-pattern>/CaserneServlet/listerCaserne</url-pattern>
+    </servlet-mapping>
+>>>>>>> feature/lister-caserne
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+
 </web-app>

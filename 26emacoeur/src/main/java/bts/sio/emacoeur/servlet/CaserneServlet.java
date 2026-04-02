@@ -4,25 +4,32 @@
  */
 package bts.sio.emacoeur.servlet;
 
-import bts.sio.emacoeur.database.ConnexionBdd;
-import bts.sio.emacoeur.database.DaoIntervention;
-import bts.sio.emacoeur.model.Intervention;
+import bts.sio.emacoeur.database.DaoCaserne;
+import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.Connection;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
  *
  * @author ts1sio
  */
-@WebServlet(name = "InterventionServlet", urlPatterns = {"/InterventionServlet"})
-public class InterventionServlet extends HttpServlet {
+public class CaserneServlet extends HttpServlet {
+    
+       Connection cnx ;
+            
+    @Override
+    public void init()
+    {     
+        System.out.println("Servlet init");
+        ServletContext servletContext=getServletContext();
+        cnx = (Connection)servletContext.getAttribute("connection");     
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +48,10 @@ public class InterventionServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet InterventionServlet</title>");
+            out.println("<title>Servlet CaserneServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet InterventionServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CaserneServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,29 +66,24 @@ public class InterventionServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     @Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    String url = request.getRequestURI();
-    
-    if(url.equals("/26emacoeur/InterventionServlet/listerIntervention"))
-    {
-        // Ouvrir la connexion
-        Connection cnx = ConnexionBdd.ouvrirConnexion();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         
-        // Charger la liste avec la connexion
-        ArrayList<Intervention> lesInterventions = DaoIntervention.getLesInterventions(cnx);
-        request.setAttribute("pLesInterventions", lesInterventions);
+         String url = request.getRequestURI();
         
-        // Fermer la connexion
-        ConnexionBdd.fermerConnexion(cnx);
+        if(url.equals("/26emacoeur/CaserneServlet/listerCaserne"))
+        {
+            
+             ArrayList lesCasernes = DaoCaserne.getLesCasernes(cnx);
+            request.setAttribute("pLesCasernes", lesCasernes);
+            System.out.println("lister casernes - nombres de casernes récupérés" + lesCasernes.size() );
+            
+            getServletContext().getRequestDispatcher("/vues/caserne/listerCaserne.jsp").forward(request, response);
+        }
         
-        getServletContext().getRequestDispatcher("/vues/intervention/listerIntervention.jsp").forward(request, response);
-        return;
+        processRequest(request, response);
     }
-    processRequest(request, response);
-}
 
     /**
      * Handles the HTTP <code>POST</code> method.
