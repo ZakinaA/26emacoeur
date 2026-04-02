@@ -4,6 +4,9 @@
  */
 package bts.sio.emacoeur.servlet;
 
+import bts.sio.emacoeur.database.ConnexionBdd;
+import bts.sio.emacoeur.database.DaoIntervention;
+import bts.sio.emacoeur.model.Intervention;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,6 +14,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  *
@@ -54,11 +59,29 @@ public class InterventionServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    String url = request.getRequestURI();
+    
+    if(url.equals("/26emacoeur/InterventionServlet/listerIntervention"))
+    {
+        // Ouvrir la connexion
+        Connection cnx = ConnexionBdd.ouvrirConnexion();
+        
+        // Charger la liste avec la connexion
+        ArrayList<Intervention> lesInterventions = DaoIntervention.getLesInterventions(cnx);
+        request.setAttribute("pLesInterventions", lesInterventions);
+        
+        // Fermer la connexion
+        ConnexionBdd.fermerConnexion(cnx);
+        
+        getServletContext().getRequestDispatcher("/vues/intervention/listerIntervention.jsp").forward(request, response);
+        return;
     }
+    processRequest(request, response);
+}
 
     /**
      * Handles the HTTP <code>POST</code> method.

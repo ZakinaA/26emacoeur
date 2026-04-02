@@ -18,9 +18,20 @@
         <servlet-name>PompierServlet</servlet-name>
         <url-pattern>/PompierServlet/consulterPompier</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InterventionServlet</servlet-name>
+        <servlet-class>bts.sio.emacoeur.servlet.InterventionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InterventionServlet</servlet-name>
+        <url-pattern>/InterventionServlet/listerIntervention</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+
 </web-app>
