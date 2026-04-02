@@ -4,7 +4,8 @@
  */
 package bts.sio.emacoeur.tests;
 
-import bts.sio.emacoeur.database.ConnexionBdd;
+//import bts.sio.emacoeur.database.ConnexionBdd;
+import database.ConnexionBdd;
 import java.sql.Connection;
 
 /**

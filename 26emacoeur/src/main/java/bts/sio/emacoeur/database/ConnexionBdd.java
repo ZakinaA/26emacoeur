@@ -2,76 +2,91 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package bts.sio.emacoeur.database;
+package database;
 
-import jakarta.servlet.ServletContextEvent;
-import jakarta.servlet.ServletContextListener;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
- * @author ts1sio
+ * @author 
  */
-public class ConnexionBdd implements ServletContextListener {
+public class ConnexionBdd {
     
-    public static Connection connection = null;
-    public static Statement st = null;
-    public static ResultSet rs = null;
-
-    @Override
-    public void contextInitialized(ServletContextEvent sce) {
-        Connection cnx = ouvrirConnexion();
-        sce.getServletContext().setAttribute("connection", cnx);
-        System.out.println("Connexion stockée dans le contexte");
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        Connection cnx = (Connection) sce.getServletContext().getAttribute("connection");
-        fermerConnexion(cnx);
-    }
+    public static Connection connection=null;
+    public static Statement st=null;
+    public static ResultSet rs=null;
        
-    public static Connection ouvrirConnexion() {
+    // Méthode de création et d'ouverture de la connexion
+    public static Connection ouvrirConnexion(){
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            System.out.println("Pilote MARIADB JDBC chargé");
+                Class.forName("org.mariadb.jdbc.Driver");
+                System.out.println("Pilote MARIADB JDBC chargé");
+                                
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();         
+                e.printStackTrace();         
         }     
         try {
             //obtention de la connexion
-
-        //connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/26emacoeur","root","");
-        connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3307/26emacoeur","root","");
-
+            connection= DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3307/26emacoeur","root","");
             System.out.println("Connexion OK");
+           
         } catch (SQLException e) {
             e.printStackTrace();
         }            
-        return connection;
+        return connection ;
+     
     }
-    
-    public static void fermerConnexion(ResultSet rs) {
-        if (rs != null) {
-            try { rs.close(); }
-            catch(Exception e) { System.out.println("Erreur fermeture ResultSet"); }
+   
+    // Méthode de fermeture du resultset
+    public static void fermerConnexion(ResultSet rs)
+    {
+        if(rs!=null)
+        {
+            try
+            {
+                rs.close();
+            }
+            catch(Exception e)
+            {
+        	System.out.println("Erreur lors de la fermeture d’une connexion dans fermerConnexion(ResultSet)");
+            }
         }
     }
 
-    public static void fermerConnexion(Statement stmt) {
-        if (stmt != null) {
-            try { stmt.close(); }
-            catch(Exception e) { System.out.println("Erreur fermeture Statement"); }
+    // Méthode de fermeture du statement
+    public static void fermerConnexion(Statement stmt)
+    {
+        if(stmt!=null)
+        {
+            try
+            {
+                stmt.close();
+            }
+            catch(Exception e)
+            {
+                System.out.println("Erreur lors de la fermeture d’une connexion dans fermerConnexion(Statement)");
+            }
         }
     }
 
-    public static void fermerConnexion(Connection con) {
-        if (con != null) {
-            try { 
-                con.close(); 
+    /// Méthode de fermeture de la connexion
+    public static void fermerConnexion(Connection con)
+    {
+        if(con!=null)
+        {
+            try
+            {
+                con.close();
                 System.out.println("Fermeture Connexion OK");
             }
-            catch(Exception e) { System.out.println("Erreur fermeture Connection"); }
+            catch(Exception e)
+            {
+                System.out.println("Erreur lors de la fermeture d’une connexion dans fermerConnexion(Connection)");
+            }
         }
-    }
+    }  
 }

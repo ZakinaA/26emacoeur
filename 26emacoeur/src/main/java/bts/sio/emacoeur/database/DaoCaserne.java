@@ -51,6 +51,36 @@ public class DaoCaserne {
         return desCasernes;
     }
         
+    public static Caserne getCaserneById (Connection cnx, int idCaserne){
+        
+        Caserne uneCaserne = new Caserne();
+        try
+        {
+            requete=cnx.prepareStatement(" select cas_id as c_id, cas_nom as c_nom, cas_ville as c_ville, cas_cp as c_cp, cas_rue as c_rue \n"
+            + "from caserne \n " +
+            "where cas_id");
+            
+            requete.setInt(1, idCaserne);
+            
+            rs=requete.executeQuery();
+            
+            if(rs.next()){
+                
+                uneCaserne.setId(rs.getInt("c_id"));
+                uneCaserne.setNom(rs.getString("c_nom"));
+                uneCaserne.setVille(rs.getString("c_ville"));
+                uneCaserne.setCp(rs.getString("c_cp"));
+                uneCaserne.setRue(rs.getString("c_rue"));
+                
+        }
+    }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return uneCaserne;
+    }
+    
         
         
 }
