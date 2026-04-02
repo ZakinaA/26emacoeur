@@ -5,7 +5,7 @@
     <artifactId>26emacoeur</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>26emacoeur-1.0-SNAPSHOT</name>
+    <name>26emacoeur</name>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -48,6 +48,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
+                <finalName>26emacoeur02</finalName>
             </plugin>
         </plugins>
     </build>
