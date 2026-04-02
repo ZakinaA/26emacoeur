@@ -75,7 +75,7 @@ public class CaserneServlet extends HttpServlet {
         if(url.equals("/26emacoeur/CaserneServlet/listerCaserne"))
         {
             
-             ArrayList lesCasernes = DaoCaserne.getLesCasernes(cnx);
+            ArrayList lesCasernes = DaoCaserne.getLesCasernes(cnx);
             request.setAttribute("pLesCasernes", lesCasernes);
             System.out.println("lister casernes - nombres de casernes récupérés" + lesCasernes.size() );
             
