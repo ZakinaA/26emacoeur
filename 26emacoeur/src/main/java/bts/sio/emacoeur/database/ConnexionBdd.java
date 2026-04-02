@@ -19,6 +19,7 @@ public class ConnexionBdd implements ServletContextListener {
     public static ResultSet rs = null;
 
     @Override
+    
     public void contextInitialized(ServletContextEvent sce) {
         Connection cnx = ouvrirConnexion();
         sce.getServletContext().setAttribute("connection", cnx);

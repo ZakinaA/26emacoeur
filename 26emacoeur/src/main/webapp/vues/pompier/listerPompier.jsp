@@ -23,9 +23,6 @@
                 <th>Date naissance</th>
                 <th>Numéro bip</th>
                 <th>Statut</th>
-                <th>Profession</th>
-                <th>Grade</th>
-                <th>Caserne</th>
             </tr>
             <%
                 ArrayList<Pompier> lesPompiers = (ArrayList<Pompier>) request.getAttribute("pLesPompiers");
@@ -34,14 +31,15 @@
             %>
             <tr>
                 <td><%= p.getId() %></td>
-                <td><%= p.getNom() %></td>
+                <td><a href="consulterPompier?id=<%= p.getId() %>">
+                        <%= p.getNom() %>
+                    </a>
+                    </td>
                 <td><%= p.getPrenom() %></td>
                 <td><%= p.getDateNaissance() %></td>
                 <td><%= p.getNumeroBip() %></td>
                 <td><%= p.getStatut() %></td>
-                <td><%= p.getProfession().getLibelle() %></td>
-                <td><%= p.getGrades().getLibelle() %></td>
-                <td><%= p.getCaserne().getNom() %></td>
+
             </tr>
             <%
                     } 

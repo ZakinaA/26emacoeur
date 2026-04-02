@@ -84,4 +84,55 @@ public class DaoPompier {
         } 
         return lesPompiers; // Retourne la liste remplie
     }
+    
+public static Pompier getPompierById(Connection cnx, int idPompier) {
+    Pompier unPompier = new Pompier();
+    try {
+        requete = cnx.prepareStatement(
+        "SELECT pom.pom_id, pom.pom_nom, pom.pom_prenom, " +
+        "pom.pom_dateNaissance, pom.pom_numeroBip, pom.pom_statut, " +
+        "pro.pro_id, pro.pro_libelle, " +
+        "gra.gra_id, gra.gra_libelle, " +
+        "cas.cas_id, cas.cas_nom " +
+        "FROM pompier pom " +
+        "INNER JOIN profession pro ON pom.pro_id = pro.pro_id " +
+        "INNER JOIN grades gra ON pom.gra_id = gra.gra_id " +
+        "INNER JOIN caserne cas ON pom.cas_id = cas.cas_id " +
+        "WHERE pom.pom_id = ?"   // ← seule différence avec getLesPompiers
+        );
+        requete.setInt(1, idPompier);
+        rs = requete.executeQuery();
+
+        if (rs.next()) {
+            unPompier.setId(rs.getInt("pom_id"));          
+            unPompier.setNom(rs.getString("pom_nom"));       
+            unPompier.setPrenom(rs.getString("pom_prenom")); 
+            unPompier.setNumeroBip(rs.getInt("pom_numeroBip")); 
+            unPompier.setStatut(rs.getString("pom_statut")); 
+            
+            java.sql.Date sqlDate = rs.getDate("pom_dateNaissance"); 
+            if (sqlDate != null) {
+                unPompier.setDateNaissance(sqlDate.toLocalDate());
+            }
+            
+            Profession pro = new Profession();
+            pro.setId(rs.getInt("pro_id"));
+            pro.setLibelle(rs.getString("pro_libelle"));
+            unPompier.setProfession(pro);
+            
+            Grades gra = new Grades();
+            gra.setId(rs.getInt("gra_id"));
+            gra.setLibelle(rs.getString("gra_libelle")); 
+            unPompier.setGrades(gra);
+
+            Caserne cas = new Caserne();
+            cas.setId(rs.getInt("cas_id"));          
+            cas.setNom(rs.getString("cas_nom"));       
+            unPompier.setCaserne(cas);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return unPompier;
+}
 }
