@@ -1,2 +1,2 @@
 ﻿# 26emacoeur
-# Contributors : Nathan, Jules, Quentin
+# Contributors : Nathan, Jules, Quentin, alan
