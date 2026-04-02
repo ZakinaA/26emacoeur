@@ -3,13 +3,16 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
    version="6.0">
+    <listener>
+        <listener-class>bts.sio.emacoeur.database.ConnexionBdd</listener-class>
+    </listener>
     <servlet>
         <servlet-name>PompierServlet</servlet-name>
-        <servlet-class>bts.sio.emacoeur.servlet</servlet-class>
+        <servlet-class>bts.sio.emacoeur.servlet.PompierServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PompierServlet</servlet-name>
-        <url-pattern>/PompierServlet/</url-pattern>
+        <url-pattern>/PompierServlet/listerPompier</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

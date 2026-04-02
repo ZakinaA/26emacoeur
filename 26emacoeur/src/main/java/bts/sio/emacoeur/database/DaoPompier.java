@@ -30,7 +30,7 @@ public class DaoPompier {
         
         ArrayList<Pompier> lesPompiers = new ArrayList<Pompier>();
         try {
-            // Requête corrigée (ajout de pom.nom et des virgules/espaces)
+            
             requete = cnx.prepareStatement(
                     "SELECT pom.pom_id, pom.pom_nom, pom.pom_prenom, " +
                     "pom.pom_dateNaissance, pom.pom_numeroBip, pom.pom_statut, " +
