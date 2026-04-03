@@ -50,5 +50,6 @@
                 }
             %>
         </table>
+        <a href="<%= request.getContextPath() %>/PompierServlet/ajouterPompier"><button>Nouveau Pompier</button></a>
     </body>
 </html>

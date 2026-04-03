@@ -5,7 +5,10 @@
 package bts.sio.emacoeur.servlet;
 
 import bts.sio.emacoeur.database.ConnexionBdd;
+import bts.sio.emacoeur.database.DaoCaserne;
 import bts.sio.emacoeur.database.DaoPompier;
+import bts.sio.emacoeur.form.FormPompier;
+import bts.sio.emacoeur.model.Caserne;
 import bts.sio.emacoeur.model.Pompier;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
@@ -95,6 +98,13 @@ public class PompierServlet extends HttpServlet {
             // Vérifiez le chemin vers votre fichier JSP
             getServletContext().getRequestDispatcher("/vues/pompier/consulterPompier.jsp").forward(request, response);
         }
+        else if (url.equals("/26emacoeur/PompierServlet/ajouterPompier")) {
+            
+            ArrayList<Caserne> lesCasernes = DaoCaserne.getLesCasernes(cnx);
+            request.setAttribute("pLesCasernes", lesCasernes);
+            this.getServletContext().getRequestDispatcher("/vues/pompier/ajouterPompier.jsp").forward(request, response);
+            
+        }
         processRequest(request, response);
     }
     
@@ -108,9 +118,28 @@ public class PompierServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+        throws ServletException, IOException {
+
+    String url = request.getRequestURI();
+
+    if (url.equals("/26emacoeur/PompierServlet/ajouterPompier")) {
+
+        FormPompier formPompier = new FormPompier();
+        Pompier unPompier = formPompier.ajouterPompier(request);
+
+        request.setAttribute("formPompier", formPompier);
+        request.setAttribute("pPompier", unPompier);
+
+        if (formPompier.getErreurs().isEmpty()) {
+            Pompier pompierInsere = DaoPompier.ajouterPompier(cnx, unPompier);
+            if (pompierInsere != null) {
+                getServletContext().getRequestDispatcher("/vues/pompier/consulterPompier.jsp")
+                        .forward(request, response);
+            }
+        } else {
+        }
     }
+}
 
     /**
      * Returns a short description of the servlet.

@@ -135,4 +135,23 @@ public static Pompier getPompierById(Connection cnx, int idPompier) {
     }
     return unPompier;
 }
+
+public static Pompier ajouterPompier(Connection cnx, Pompier p) {
+    try {
+        PreparedStatement requete = cnx.prepareStatement(
+            "INSERT INTO pompier (pom_prenom, pom_nom, pom_statut, pom_numeroBip, cas_id) " +
+            "VALUES (?, ?, ?, ?, ?)"
+        );
+        requete.setString(1, p.getPrenom());
+        requete.setString(2, p.getNom());
+        requete.setString(3, p.getStatut());
+        requete.setInt(4, p.getNumeroBip());
+        requete.setInt(5, p.getCaserne().getId());
+        requete.executeUpdate();
+        return p; // succès
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return null; // échec
+    }
+}
 }

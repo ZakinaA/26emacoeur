@@ -18,10 +18,15 @@
         <servlet-name>PompierServlet</servlet-name>
         <url-pattern>/PompierServlet/listerPompier</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>PompierServlet</servlet-name>
         <url-pattern>/PompierServlet/consulterPompier</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PompierServlet</servlet-name>
+        <url-pattern>/PompierServlet/ajouterPompier</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>InterventionServlet</servlet-name>
