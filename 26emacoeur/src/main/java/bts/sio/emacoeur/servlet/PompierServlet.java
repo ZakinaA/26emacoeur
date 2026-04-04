@@ -7,9 +7,11 @@ package bts.sio.emacoeur.servlet;
 import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoCaserne;
 import bts.sio.emacoeur.database.DaoPompier;
+import bts.sio.emacoeur.database.DaoProfession;
 import bts.sio.emacoeur.form.FormPompier;
 import bts.sio.emacoeur.model.Caserne;
 import bts.sio.emacoeur.model.Pompier;
+import bts.sio.emacoeur.model.Profession;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -73,40 +75,45 @@ public class PompierServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String url = request.getRequestURI();
-        
-        if(url.equals("/26emacoeur/PompierServlet/listerPompier"))
-        {
-            try {
-                ArrayList lesPompiers = DaoPompier.getLesPompiers(cnx);
-                request.setAttribute("pLesPompiers", lesPompiers);
-                getServletContext().getRequestDispatcher("/vues/pompier/listerPompier.jsp").forward(request, response);
-                return;
-            } catch (SQLException ex) {
-                System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-            }
+        throws ServletException, IOException {
+    String url = request.getRequestURI();
+    
+    if (url.equals("/26emacoeur/PompierServlet/listerPompier")) {
+        try {
+            ArrayList lesPompiers = DaoPompier.getLesPompiers(cnx);
+            request.setAttribute("pLesPompiers", lesPompiers);
+            getServletContext().getRequestDispatcher("/vues/pompier/listerPompier.jsp").forward(request, response);
+            return;
+        } catch (SQLException ex) {
+            System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
-        else if (url.equals("/26emacoeur/PompierServlet/consulterPompier")) {
-            
-            String idParam = request.getParameter("id");
-            int idPompier = Integer.parseInt(idParam);
-            
-            Pompier p = DaoPompier.getPompierById(cnx, idPompier);
-            // Transmettre l'objet à la JSP (vérifiez que le nom "pLEleve" est celui utilisé dans consulter.jsp)
-            request.setAttribute("pPompier", p);
-            // Vérifiez le chemin vers votre fichier JSP
-            getServletContext().getRequestDispatcher("/vues/pompier/consulterPompier.jsp").forward(request, response);
-        }
-        else if (url.equals("/26emacoeur/PompierServlet/ajouterPompier")) {
-            
+    }
+    else if (url.equals("/26emacoeur/PompierServlet/consulterPompier")) {
+        String idParam = request.getParameter("id");
+        int idPompier = Integer.parseInt(idParam);
+        Pompier p = DaoPompier.getPompierById(cnx, idPompier);
+        request.setAttribute("pPompier", p);
+        getServletContext().getRequestDispatcher("/vues/pompier/consulterPompier.jsp").forward(request, response);
+        return;
+    }
+    else if (url.equals("/26emacoeur/PompierServlet/ajouterPompier")) {
+        try {
+            // 1. D'abord on remplit les attributs
             ArrayList<Caserne> lesCasernes = DaoCaserne.getLesCasernes(cnx);
             request.setAttribute("pLesCasernes", lesCasernes);
-            this.getServletContext().getRequestDispatcher("/vues/pompier/ajouterPompier.jsp").forward(request, response);
             
+            ArrayList<Profession> lesProfessions = DaoProfession.getLesProfessions(cnx);
+            request.setAttribute("pLesProfessions", lesProfessions);
+            
+            // 2. Ensuite seulement on forward
+            this.getServletContext().getRequestDispatcher("/vues/pompier/ajouterPompier.jsp").forward(request, response);
+            return;
+        } catch (SQLException ex) {
+            System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
-        processRequest(request, response);
     }
+    processRequest(request, response);
+}
     
     /**
      * Handles the HTTP <code>POST</code> method.
