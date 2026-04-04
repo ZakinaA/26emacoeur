@@ -6,10 +6,12 @@ package bts.sio.emacoeur.servlet;
 
 import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoCaserne;
+import bts.sio.emacoeur.database.DaoGrades;
 import bts.sio.emacoeur.database.DaoPompier;
 import bts.sio.emacoeur.database.DaoProfession;
 import bts.sio.emacoeur.form.FormPompier;
 import bts.sio.emacoeur.model.Caserne;
+import bts.sio.emacoeur.model.Grades;
 import bts.sio.emacoeur.model.Pompier;
 import bts.sio.emacoeur.model.Profession;
 import jakarta.servlet.ServletContext;
@@ -98,14 +100,17 @@ public class PompierServlet extends HttpServlet {
     }
     else if (url.equals("/26emacoeur/PompierServlet/ajouterPompier")) {
         try {
-            // 1. D'abord on remplit les attributs
+            
             ArrayList<Caserne> lesCasernes = DaoCaserne.getLesCasernes(cnx);
             request.setAttribute("pLesCasernes", lesCasernes);
             
             ArrayList<Profession> lesProfessions = DaoProfession.getLesProfessions(cnx);
             request.setAttribute("pLesProfessions", lesProfessions);
             
-            // 2. Ensuite seulement on forward
+             ArrayList<Grades> lesGrades = DaoGrades.getLesGrades(cnx);
+             request.setAttribute("pLesGrades", lesGrades);
+            
+            
             this.getServletContext().getRequestDispatcher("/vues/pompier/ajouterPompier.jsp").forward(request, response);
             return;
         } catch (SQLException ex) {
@@ -125,7 +130,7 @@ public class PompierServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+    throws ServletException, IOException {
 
     String url = request.getRequestURI();
 
@@ -144,9 +149,20 @@ public class PompierServlet extends HttpServlet {
                         .forward(request, response);
             }
         } else {
+            // Recharger les listes pour réafficher le formulaire
+            try {
+                request.setAttribute("pLesCasernes", DaoCaserne.getLesCasernes(cnx));
+                request.setAttribute("pLesProfessions", DaoProfession.getLesProfessions(cnx));
+                request.setAttribute("pLesGrades", DaoGrades.getLesGrades(cnx));
+            } catch (SQLException ex) {
+                System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+            getServletContext().getRequestDispatcher("/vues/pompier/ajouterPompier.jsp")
+                    .forward(request, response);
         }
     }
 }
+
 
     /**
      * Returns a short description of the servlet.
