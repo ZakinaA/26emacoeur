@@ -35,6 +35,11 @@
             <input id="numerobip" type="int" name="numerobip" size="11" maxlength="11">
             <br>
             
+            <label for="dateNaissance">Date Naissance : </label>
+            <input id="dateNaissance" type="date" name="dateNaissance">
+            <br>
+            
+            
             <label for="caserne">Caserne : </label>
             <select name="maison_id">
             <%

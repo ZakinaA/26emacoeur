@@ -54,6 +54,7 @@ public class FormPompier {
             throw new Exception("Le numéro de bip doit être un nombre.");
         }
     }
+        
 
     public Pompier ajouterPompier(HttpServletRequest request) {
         
@@ -62,9 +63,11 @@ public class FormPompier {
     String prenom = getDataForm(request, "prenom");
     String statut = getDataForm(request, "statut");
     String numeroBip = getDataForm(request, "numerobip");
+    String dateNaissance = getDataForm(request, "dateNaissance");
     String caserneId = getDataForm(request, "maison_id");
     String professionId = getDataForm(request, "pro_id");   
-    String gradeId = getDataForm(request, "gra_id");         
+    String gradeId = getDataForm(request, "gra_id");
+
 
     try { validationNom(nom); }
     catch (Exception e) { setErreur("nom", e.getMessage()); }
@@ -73,6 +76,14 @@ public class FormPompier {
     try { validationNumeroBip(numeroBip); }
     catch (Exception e) { setErreur("numerobip", e.getMessage()); }
 
+    if (dateNaissance != null) {
+        try {
+            p.setDateNaissance(java.time.LocalDate.parse(dateNaissance));
+        } catch (Exception e) {
+            setErreur("dateNaissance", "La date doit être au format AAAA-MM-JJ.");
+        }
+    }
+        
     p.setNom(nom);
     p.setPrenom(prenom);
     p.setStatut(statut);

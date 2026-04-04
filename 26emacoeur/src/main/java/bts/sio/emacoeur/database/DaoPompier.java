@@ -139,16 +139,17 @@ public static Pompier getPompierById(Connection cnx, int idPompier) {
 public static Pompier ajouterPompier(Connection cnx, Pompier p) {
     try {
         PreparedStatement requete = cnx.prepareStatement(
-            "INSERT INTO pompier (pom_prenom, pom_nom, pom_statut, pom_numeroBip, cas_id, pro_id, gra_id) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?)"
+            "INSERT INTO pompier (pom_prenom, pom_nom, pom_statut, pom_numeroBip, pom_dateNaissance, cas_id, pro_id, gra_id) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
         );
         requete.setString(1, p.getPrenom());
         requete.setString(2, p.getNom());
         requete.setString(3, p.getStatut());
         requete.setInt(4, p.getNumeroBip());
-        requete.setInt(5, p.getCaserne().getId());
-        requete.setInt(6, p.getProfession().getId());
-        requete.setInt(7, p.getGrades().getId());
+        requete.setDate(5, java.sql.Date.valueOf(p.getDateNaissance()));
+        requete.setInt(6, p.getCaserne().getId());
+        requete.setInt(7, p.getProfession().getId());
+        requete.setInt(8, p.getGrades().getId());
         requete.executeUpdate();
         return p;
     } catch (SQLException e) {
