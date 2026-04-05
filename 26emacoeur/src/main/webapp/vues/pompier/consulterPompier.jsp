@@ -12,6 +12,39 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Emacoeur</title>
+        <style>
+        body { 
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #333;
+        }
+        h1 { 
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th { 
+            background: #f5f5f5;
+            width: 40%;
+            font-weight: 600;
+        }
+        a { 
+            color: #1a6fba;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        </style>
     </head>
     <body>
         <h1>Détails du pompier :</h1>
