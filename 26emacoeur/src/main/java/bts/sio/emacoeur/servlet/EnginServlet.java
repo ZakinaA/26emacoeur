@@ -6,6 +6,8 @@ package bts.sio.emacoeur.servlet;
 
 import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoEngin;
+import bts.sio.emacoeur.form.FormEngin;
+import bts.sio.emacoeur.model.Engin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -87,9 +89,28 @@ public class EnginServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String url = request.getRequestURI();
+
+        if (url.equals("/26emacoeur/GradesServlet/ajouterGrades")) {
+            FormEngin formEngin = new FormEngin();
+            Engin unEngin = formEngin.ajouterEngin(request);
+
+            request.setAttribute("formEngins", formEngin);
+            request.setAttribute("pEngins", unEngin);
+
+            if (formEngin.getErreurs().isEmpty()) {
+                Engin gradeInsere = DaoEngin.ajouterEngin(cnx, unEngin);
+                if (gradeInsere != null) {
+                    getServletContext().getRequestDispatcher("/vues/engin/consulterEngin.jsp")
+                            .forward(request, response);
+                }
+            } else {
+                getServletContext().getRequestDispatcher("/vues/grades/ajouterEngin.jsp")
+                        .forward(request, response);
+            }
+        }
     }
 
     /**

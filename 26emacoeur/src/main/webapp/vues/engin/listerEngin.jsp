@@ -67,5 +67,6 @@
                 }
             %>
         </table>
+        <a href="<%= request.getContextPath() %>/EnginServlet/ajouterEngin"><button>Nouveau Engin</button></a>
     </body>
 </html>

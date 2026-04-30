@@ -70,4 +70,18 @@ public class DaoEngin {
         return unEngin;
         
     }
+    
+    public static Engin ajouterEngin(Connection cnx, Engin e) {
+        try {
+            PreparedStatement requete = cnx.prepareStatement(
+                "INSERT INTO engin (eng_type) VALUES (?)"
+            );
+            requete.setString(1, e.getType());
+            requete.executeUpdate();
+            return e;
+        } catch (SQLException s) {
+            s.printStackTrace();
+            return null;
+        }
+    }
 }
