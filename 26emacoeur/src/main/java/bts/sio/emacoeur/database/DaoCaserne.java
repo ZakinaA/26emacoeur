@@ -81,6 +81,25 @@ public class DaoCaserne {
         return uneCaserne;
     }
     
+    public static Caserne ajouterCaserne(Connection cnx, Caserne c) {
+    try {
+        PreparedStatement requete = cnx.prepareStatement(
+            "INSERT INTO caserne (cas_nom, cas_ville, cas_cp, cas_rue) " +
+            "VALUES (?, ?, ?, ?)"
+        );
+        requete.setString(1, c.getNom());
+        requete.setString(2, c.getVille());
+        requete.setString(3, c.getCp());
+        requete.setString(4, c.getRue());
+
+        requete.executeUpdate();
+        return c;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+    
         
         
 }

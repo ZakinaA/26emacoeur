@@ -93,6 +93,16 @@
         <url-pattern>/ProfessionServlet/listerProfession</url-pattern>
     </servlet-mapping>
 
+  <servlet-mapping>
+        <servlet-name>CaserneServlet</servlet-name>
+        <url-pattern>/CaserneServlet/consulterCaserne</url-pattern>
+    </servlet-mapping>
+    
+     <servlet-mapping>
+        <servlet-name>CaserneServlet</servlet-name>
+        <url-pattern>/CaserneServlet/ajouterCaserne</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30
