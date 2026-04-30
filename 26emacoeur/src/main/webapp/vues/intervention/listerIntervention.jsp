@@ -53,7 +53,7 @@
         <%
             ArrayList<Intervention> lesInterventions = (ArrayList<Intervention>)request.getAttribute("pLesInterventions");
         %>
-        <table>  
+        <table border="1">  
             <thead>
                 <tr>             
                     <th>id</th>
