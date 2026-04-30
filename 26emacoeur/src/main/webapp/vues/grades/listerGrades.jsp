@@ -62,10 +62,7 @@
             %>
             <tr>
                 <td><%= g.getId() %></td>
-                <td><a href="consulterGrades?id=<%=g.getId() %>">
-                        <%= g.getLibelle()%>
-                    </a>
-                </td>
+                <td><%= g.getLibelle()%></td>
             </tr>
             <%
                     } 
