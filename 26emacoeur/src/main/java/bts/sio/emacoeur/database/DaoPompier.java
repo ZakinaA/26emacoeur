@@ -157,4 +157,22 @@ public static Pompier ajouterPompier(Connection cnx, Pompier p) {
         return null;
     }
 }
+
+public static boolean supprimerPompier(Connection cnx, Pompier p) {
+
+    String sql = "DELETE FROM pompier WHERE pom_id = ?";
+
+    try (PreparedStatement requete = cnx.prepareStatement(sql)) {
+        requete.setInt(1, p.getId());
+        
+        int nbLignesAffectees = requete.executeUpdate();
+        
+        // Retourne true si au moins une ligne a été supprimée
+        return nbLignesAffectees > 0;
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
 }

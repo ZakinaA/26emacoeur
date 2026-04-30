@@ -58,7 +58,11 @@
                 <th>Date naissance</th>
                 <th>Numéro bip</th>
                 <th>Statut</th>
+<<<<<<< HEAD
                 <th>Modif</th>
+=======
+                <th><center>Modifier</center></th>
+>>>>>>> b4ea3e64d25a54709c325e740553b637d9dda5da
             </tr>
             <%
                 ArrayList<Pompier> lesPompiers = (ArrayList<Pompier>) request.getAttribute("pLesPompiers");
@@ -75,7 +79,16 @@
                 <td><%= p.getDateNaissance() %></td>
                 <td><%= p.getNumeroBip() %></td>
                 <td><%= p.getStatut() %></td>
+<<<<<<< HEAD
                 <td><button>test</button></td>
+=======
+                <td>
+                    <a href="<%= request.getContextPath() %>/PompierServlet/supprimerPompier?id=<%= p.getId() %>"
+                       onclick="return confirm('Supprimer <%= p.getPrenom() %> <%= p.getNom() %> ?');">
+                        <button type="button">Supprimer</button>
+                    </a>
+                </td>
+>>>>>>> b4ea3e64d25a54709c325e740553b637d9dda5da
 
             </tr>
             <%
