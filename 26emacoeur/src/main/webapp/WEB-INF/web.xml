@@ -38,6 +38,11 @@
         <url-pattern>/PompierServlet/ajouterPompier</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>PompierServlet</servlet-name>
+        <url-pattern>/PompierServlet/modifierPompier</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
         <servlet-name>InterventionServlet</servlet-name>
         <url-pattern>/InterventionServlet/listerIntervention</url-pattern>
     </servlet-mapping>
