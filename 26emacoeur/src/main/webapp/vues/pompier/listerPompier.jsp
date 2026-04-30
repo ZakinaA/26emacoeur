@@ -74,6 +74,7 @@
                 <td><%= p.getDateNaissance() %></td>
                 <td><%= p.getNumeroBip() %></td>
                 <td><%= p.getStatut() %></td>
+                
 
             </tr>
             <%
