@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-   version="6.0">
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <listener>
         <listener-class>bts.sio.emacoeur.database.ConnexionBdd</listener-class>
     </listener>
@@ -13,6 +10,10 @@
     <servlet>
         <servlet-name>CaserneServlet</servlet-name>
         <servlet-class>bts.sio.emacoeur.servlet.CaserneServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnginServlet</servlet-name>
+        <servlet-class>bts.sio.emacoeur.servlet.EnginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PompierServlet</servlet-name>
@@ -26,8 +27,6 @@
         <servlet-name>PompierServlet</servlet-name>
         <url-pattern>/PompierServlet/ajouterPompier</url-pattern>
     </servlet-mapping>
-
-
     <servlet>
         <servlet-name>InterventionServlet</servlet-name>
         <servlet-class>bts.sio.emacoeur.servlet.InterventionServlet</servlet-class>
@@ -36,17 +35,17 @@
         <servlet-name>InterventionServlet</servlet-name>
         <url-pattern>/InterventionServlet/listerIntervention</url-pattern>
     </servlet-mapping>
-
-
     <servlet-mapping>
         <servlet-name>CaserneServlet</servlet-name>
         <url-pattern>/CaserneServlet/listerCaserne</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>EnginServlet</servlet-name>
+        <url-pattern>/EnginServlet/listerEngin</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-
 </web-app>
