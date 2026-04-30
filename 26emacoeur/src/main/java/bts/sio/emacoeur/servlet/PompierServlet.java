@@ -117,6 +117,16 @@ public class PompierServlet extends HttpServlet {
             System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }
+    else if (url.equals("/26emacoeur/PompierServlet/supprimerPompier")) {
+        String idParam = request.getParameter("id");
+        int idPompier = Integer.parseInt(idParam);
+        Pompier p = DaoPompier.getPompierById(cnx, idPompier);
+        if (p != null) {
+            DaoPompier.supprimerPompier(cnx, p);
+        }
+        response.sendRedirect(request.getContextPath() + "/PompierServlet/listerPompier");
+        return;
+    }
     processRequest(request, response);
 }
     

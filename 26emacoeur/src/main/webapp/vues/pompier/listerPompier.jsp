@@ -76,7 +76,10 @@
                 <td><%= p.getNumeroBip() %></td>
                 <td><%= p.getStatut() %></td>
                 <td>
-                    <input type="button" id="delete-site" style="color: red;" value="Supprimer" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+                    <a href="<%= request.getContextPath() %>/PompierServlet/supprimerPompier?id=<%= p.getId() %>"
+                       onclick="return confirm('Supprimer <%= p.getPrenom() %> <%= p.getNom() %> ?');">
+                        <button type="button">Supprimer</button>
+                    </a>
                 </td>
 
             </tr>
