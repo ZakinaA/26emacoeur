@@ -157,4 +157,28 @@ public static Pompier ajouterPompier(Connection cnx, Pompier p) {
         return null;
     }
 }
+public static boolean modifierPompier(Connection cnx, Pompier p) {
+    try {
+        PreparedStatement requete = cnx.prepareStatement(
+            "UPDATE pompier SET pom_nom=?, pom_prenom=?, pom_statut=?, " +
+            "pom_numeroBip=?, pom_dateNaissance=?, cas_id=?, pro_id=?, gra_id=? " +
+            "WHERE pom_id=?"
+        );
+        requete.setString(1, p.getNom());
+        requete.setString(2, p.getPrenom());
+        requete.setString(3, p.getStatut());
+        requete.setInt(4, p.getNumeroBip());
+        requete.setDate(5, java.sql.Date.valueOf(p.getDateNaissance()));
+        requete.setInt(6, p.getCaserne().getId());
+        requete.setInt(7, p.getProfession().getId());
+        requete.setInt(8, p.getGrades().getId());
+        requete.setInt(9, p.getId());
+        requete.executeUpdate();
+        return true;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
 }

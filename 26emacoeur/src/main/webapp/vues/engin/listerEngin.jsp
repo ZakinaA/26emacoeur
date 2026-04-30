@@ -1,10 +1,10 @@
 <%-- 
-    Document   : listerProfession
-    Created on : 4 avr. 2026, 07:46:13
-    Author     : jules
+    Document   : listerEngin
+    Created on : 30 avr. 2026, 08:43:18
+    Author     : ts1sio
 --%>
 
-<%@page import="bts.sio.emacoeur.model.Profession"%>
+<%@page import="bts.sio.emacoeur.model.Engin"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -49,22 +49,20 @@
     </style>
     </head>
     <body>
-        <h1>Liste des Professions :</h1>
+        <h1>Liste des Engins :</h1>
         <table border="1">
             <tr>
                 <th>ID</th>
-                <th>Type</th>
-                <th>Ville</th>
+                <th>type</th>
             </tr>
             <%
-                ArrayList<Profession> lesProfessions = (ArrayList<Profession>) request.getAttribute("pLesProfessions");
+                ArrayList<Engin> lesEngins = (ArrayList<Engin>) request.getAttribute("pLesEngins");
             %>
             <%
-                for (Profession p : lesProfessions) { 
+                for (Engin e : lesEngins) { 
                     out.println("<tr>");
-                    out.println("<td>" + p.getId() + "</td>");
-                    out.println("<td>" + p.getLibelle() + "</td>");
-                    out.println("<td>" + p.getVille() + "</td>");
+                    out.println("<td>" + e.getId() + "</td>");
+                    out.println("<td>" + e.getType() + "</td>");
                     out.println("</tr>");
                 }
             %>
