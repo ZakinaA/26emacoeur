@@ -52,6 +52,7 @@
             Pompier p = (Pompier) request.getAttribute("pPompier");
             if (p != null) {
         %>
+        <a href="/26emacoeur/PompierServlet/modifierPompier?id=<%= p.getId() %>">Modifier ce pompier</a>
         <table border="1">
             <tr><th>ID</th><td><%= p.getId() %></td></tr>
             <tr><th>Nom</th><td><%= p.getNom() %></td></tr>

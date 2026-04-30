@@ -107,8 +107,8 @@ public class PompierServlet extends HttpServlet {
             ArrayList<Profession> lesProfessions = DaoProfession.getLesProfessions(cnx);
             request.setAttribute("pLesProfessions", lesProfessions);
             
-             ArrayList<Grades> lesGrades = DaoGrades.getLesGrades(cnx);
-             request.setAttribute("pLesGrades", lesGrades);
+            ArrayList<Grades> lesGrades = DaoGrades.getLesGrades(cnx);
+            request.setAttribute("pLesGrades", lesGrades);
             
             
             this.getServletContext().getRequestDispatcher("/vues/pompier/ajouterPompier.jsp").forward(request, response);
@@ -116,6 +116,25 @@ public class PompierServlet extends HttpServlet {
         } catch (SQLException ex) {
             System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
+    }
+    else if (url.equals("/26emacoeur/PompierServlet/modifierPompier")) {
+    try {
+        String idParam = request.getParameter("id");
+        int idPompier = Integer.parseInt(idParam);
+
+        Pompier p = DaoPompier.getPompierById(cnx, idPompier);
+        request.setAttribute("pPompier", p);
+
+        request.setAttribute("pLesCasernes", DaoCaserne.getLesCasernes(cnx));
+        request.setAttribute("pLesProfessions", DaoProfession.getLesProfessions(cnx));
+        request.setAttribute("pLesGrades", DaoGrades.getLesGrades(cnx));
+
+        getServletContext().getRequestDispatcher("/vues/pompier/modifierPompier.jsp")
+                .forward(request, response);
+        return;
+    } catch (SQLException ex) {
+        System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+    }
     }
     processRequest(request, response);
 }
@@ -160,6 +179,32 @@ public class PompierServlet extends HttpServlet {
             getServletContext().getRequestDispatcher("/vues/pompier/ajouterPompier.jsp")
                     .forward(request, response);
         }
+    }
+    if (url.equals("/26emacoeur/PompierServlet/modifierPompier")) {
+    Pompier p = new Pompier();
+    p.setId(Integer.parseInt(request.getParameter("id")));
+    p.setNom(request.getParameter("nom"));
+    p.setPrenom(request.getParameter("prenom"));
+    p.setStatut(request.getParameter("statut"));
+    p.setNumeroBip(Integer.parseInt(request.getParameter("numeroBip")));
+    p.setDateNaissance(java.time.LocalDate.parse(request.getParameter("dateNaissance")));
+
+    Caserne cas = new Caserne();
+    cas.setId(Integer.parseInt(request.getParameter("caserne")));
+    p.setCaserne(cas);
+
+    Profession pro = new Profession();
+    pro.setId(Integer.parseInt(request.getParameter("profession")));
+    p.setProfession(pro);
+
+    Grades gra = new Grades();
+    gra.setId(Integer.parseInt(request.getParameter("grade")));
+    p.setGrades(gra);
+
+    DaoPompier.modifierPompier(cnx, p);
+
+    // Rediriger vers consulterPompier après la modification
+    response.sendRedirect("/26emacoeur/PompierServlet/consulterPompier?id=" + p.getId());
     }
 }
 
