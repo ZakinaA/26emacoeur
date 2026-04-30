@@ -58,14 +58,14 @@
             <%
                 ArrayList<Engin> lesEngins = (ArrayList<Engin>) request.getAttribute("pLesEngins");
             %>
-        <%
-        for (Engin e : lesEngins) { 
-            out.println("<tr>");
-            out.println("<td>" + e.getId() + "</td>");
-            out.println("<td>" + e.getType() + "</td>");
-            out.println("</tr>");
-        }
-    %>
+            <%
+                for (Engin e : lesEngins) { 
+                    out.println("<tr>");
+                    out.println("<td>" + e.getId() + "</td>");
+                    out.println("<td>" + e.getType() + "</td>");
+                    out.println("</tr>");
+                }
+            %>
         </table>
     </body>
 </html>

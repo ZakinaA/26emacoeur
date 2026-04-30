@@ -15,6 +15,16 @@
         <servlet-name>EnginServlet</servlet-name>
         <servlet-class>bts.sio.emacoeur.servlet.EnginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InterventionServlet</servlet-name>
+        <servlet-class>bts.sio.emacoeur.servlet.InterventionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfessionServlet</servlet-name>
+        <servlet-class>bts.sio.emacoeur.servlet.ProfessionServlet</servlet-class>
+    </servlet>
+    
+    
     <servlet-mapping>
         <servlet-name>PompierServlet</servlet-name>
         <url-pattern>/PompierServlet/listerPompier</url-pattern>
@@ -27,10 +37,6 @@
         <servlet-name>PompierServlet</servlet-name>
         <url-pattern>/PompierServlet/ajouterPompier</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>InterventionServlet</servlet-name>
-        <servlet-class>bts.sio.emacoeur.servlet.InterventionServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>InterventionServlet</servlet-name>
         <url-pattern>/InterventionServlet/listerIntervention</url-pattern>
@@ -42,6 +48,10 @@
     <servlet-mapping>
         <servlet-name>EnginServlet</servlet-name>
         <url-pattern>/EnginServlet/listerEngin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfessionServlet</servlet-name>
+        <url-pattern>/ProfessionServlet/listerProfession</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
