@@ -6,6 +6,8 @@ package bts.sio.emacoeur.servlet;
 
 import bts.sio.emacoeur.database.ConnexionBdd;
 import bts.sio.emacoeur.database.DaoCaserne;
+import bts.sio.emacoeur.form.FormCaserne;
+import bts.sio.emacoeur.model.Caserne;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -80,6 +82,20 @@ public class CaserneServlet extends HttpServlet {
             
             getServletContext().getRequestDispatcher("/vues/caserne/listerCaserne.jsp").forward(request, response);
         }
+       
+        else if (url.equals("/26emacoeur/CaserneServlet/consulterCaserne")) {
+        String idParam = request.getParameter("id");
+        int idCaserne = Integer.parseInt(idParam);
+        Caserne c = DaoCaserne.getCaserneById(cnx, idCaserne);
+        request.setAttribute("cCaserne", c);
+        getServletContext().getRequestDispatcher("/vues/caserne/consulterCaserne.jsp").forward(request, response);
+        return;
+    }
+        
+         else if (url.equals("/26emacoeur/CaserneServlet/ajouterCaserne")) {
+             this.getServletContext().getRequestDispatcher("/vues/caserne/ajouterCaserne.jsp").forward(request, response);
+             return;
+    }
         
         processRequest(request, response);
     }
@@ -95,6 +111,29 @@ public class CaserneServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String url = request.getRequestURI();
+        
+        if (url.equals("/26emacoeur/CaserneServlet/ajouterCaserne")) {
+
+        FormCaserne formCaserne = new FormCaserne();
+        Caserne uneCaserne = formCaserne.ajouterCaserne(request);
+
+        request.setAttribute("formCaserne", formCaserne);
+        request.setAttribute("cCaserne", uneCaserne);
+
+        if (formCaserne.getErreurs().isEmpty()) {
+            Caserne caserneInsere = DaoCaserne.ajouterCaserne(cnx, uneCaserne);
+            if (caserneInsere != null) {
+                getServletContext().getRequestDispatcher("/vues/caserne/consulterCaserne.jsp")
+                        .forward(request, response);
+            }
+        } else {
+// Recharger les listes pour réafficher le formulaire
+                        getServletContext().getRequestDispatcher("/vues/caserne/ajouterCaserne.jsp")
+                    .forward(request, response);
+        }
+    }
         processRequest(request, response);
     }
 
