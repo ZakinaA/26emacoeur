@@ -58,7 +58,8 @@
                 <th>Date naissance</th>
                 <th>Numéro bip</th>
                 <th>Statut</th>
-                <th>Modifier</th>
+                <th>Supprimer</th>
+
             </tr>
             <%
                 ArrayList<Pompier> lesPompiers = (ArrayList<Pompier>) request.getAttribute("pLesPompiers");
@@ -81,6 +82,7 @@
                         <button type="button">Supprimer</button>
                     </a>
                 </td>
+
 
             </tr>
             <%
