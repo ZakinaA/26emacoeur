@@ -75,6 +75,7 @@
             <%
                 }
             %>
+        </table>
             <a href="<%= request.getContextPath() %>/GradesServlet/ajouterGrades"><button>Nouveau Grade</button></a>
     </body>
 </html>
