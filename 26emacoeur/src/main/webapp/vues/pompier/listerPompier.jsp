@@ -58,6 +58,7 @@
                 <th>Date naissance</th>
                 <th>Numéro bip</th>
                 <th>Statut</th>
+                <th><center>Modifier</center></th>
             </tr>
             <%
                 ArrayList<Pompier> lesPompiers = (ArrayList<Pompier>) request.getAttribute("pLesPompiers");
@@ -74,6 +75,9 @@
                 <td><%= p.getDateNaissance() %></td>
                 <td><%= p.getNumeroBip() %></td>
                 <td><%= p.getStatut() %></td>
+                <td>
+                    <input type="button" id="delete-site" style="color: red;" value="Supprimer" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+                </td>
 
             </tr>
             <%
