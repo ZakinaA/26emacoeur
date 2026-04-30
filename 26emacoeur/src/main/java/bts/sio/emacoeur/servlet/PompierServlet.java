@@ -76,8 +76,8 @@ public class PompierServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
     String url = request.getRequestURI();
     
     if (url.equals("/26emacoeur/PompierServlet/listerPompier")) {
@@ -100,17 +100,12 @@ public class PompierServlet extends HttpServlet {
     }
     else if (url.equals("/26emacoeur/PompierServlet/ajouterPompier")) {
         try {
-            
             ArrayList<Caserne> lesCasernes = DaoCaserne.getLesCasernes(cnx);
             request.setAttribute("pLesCasernes", lesCasernes);
-            
             ArrayList<Profession> lesProfessions = DaoProfession.getLesProfessions(cnx);
             request.setAttribute("pLesProfessions", lesProfessions);
-            
             ArrayList<Grades> lesGrades = DaoGrades.getLesGrades(cnx);
             request.setAttribute("pLesGrades", lesGrades);
-            
-            
             this.getServletContext().getRequestDispatcher("/vues/pompier/ajouterPompier.jsp").forward(request, response);
             return;
         } catch (SQLException ex) {
@@ -118,36 +113,37 @@ public class PompierServlet extends HttpServlet {
         }
     }
     else if (url.equals("/26emacoeur/PompierServlet/modifierPompier")) {
-    try {
+        try {
+            String idParam = request.getParameter("id");
+            int idPompier = Integer.parseInt(idParam);
+            Pompier p = DaoPompier.getPompierById(cnx, idPompier);
+            request.setAttribute("pPompier", p);
+            request.setAttribute("pLesCasernes", DaoCaserne.getLesCasernes(cnx));
+            request.setAttribute("pLesProfessions", DaoProfession.getLesProfessions(cnx));
+            request.setAttribute("pLesGrades", DaoGrades.getLesGrades(cnx));
+            getServletContext().getRequestDispatcher("/vues/pompier/modifierPompier.jsp").forward(request, response);
+            return;
+        } catch (SQLException ex) {
+            System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+    }
+    else if (url.equals("/26emacoeur/PompierServlet/supprimerPompier")) {
         String idParam = request.getParameter("id");
         int idPompier = Integer.parseInt(idParam);
-
         Pompier p = DaoPompier.getPompierById(cnx, idPompier);
-        request.setAttribute("pPompier", p);
-
-        request.setAttribute("pLesCasernes", DaoCaserne.getLesCasernes(cnx));
-        request.setAttribute("pLesProfessions", DaoProfession.getLesProfessions(cnx));
-        request.setAttribute("pLesGrades", DaoGrades.getLesGrades(cnx));
-
-        getServletContext().getRequestDispatcher("/vues/pompier/modifierPompier.jsp")
-                .forward(request, response);
+        if (p != null) {
+            DaoPompier.supprimerPompier(cnx, p);
+        }
+        response.sendRedirect(request.getContextPath() + "/PompierServlet/listerPompier");
         return;
-    } catch (SQLException ex) {
-        System.getLogger(PompierServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-    }
     }
     processRequest(request, response);
 }
-    
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
+
+@Override
+public String getServletInfo() {
+    return "Short description";
+}
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
@@ -207,16 +203,10 @@ public class PompierServlet extends HttpServlet {
     response.sendRedirect("/26emacoeur/PompierServlet/consulterPompier?id=" + p.getId());
     }
 }
-
+}
 
     /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
-}

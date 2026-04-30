@@ -28,6 +28,10 @@
         <servlet-name>InterventionServlet</servlet-name>
         <servlet-class>bts.sio.emacoeur.servlet.InterventionServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>PompierServlet</servlet-name>
+        <url-pattern>/PompierServlet/*</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>ProfessionServlet</servlet-name>
